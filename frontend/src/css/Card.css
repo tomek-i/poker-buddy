@@ -1,13 +1,12 @@
-body {
+#root {
   font-size: 24px;
   font-weight: 100;
   letter-spacing: -1px;
 }
 
 .card {
-  width: 14rem;
-  height: 20rem;
-  margin: 100px auto;
+  width: 3em;
+  height: 5em;
 
   color: white;
   background: #ccc5b3;
@@ -19,6 +18,7 @@ body {
   -moz-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
 
+  display: inline-block;
   position: relative;
   overflow: hidden;
 }
@@ -53,10 +53,10 @@ body {
 
 .card .mark {
   position: absolute;
-  font-size: 60px;
+  font-size: 0.9em;
   font-weight: bold;
-  top: 16px;
-  left: 24px;
+  top: 0.125em;
+  left: 0.125em;
 }
 .card .mark:after {
   content: "";
@@ -66,10 +66,10 @@ body {
   font-variant: normal;
   text-transform: none;
   text-rendering: auto;
-  font-size: 2rem;
+  font-size: 1em;
   /*color: #e1623f;*/
-  margin-left: 10px;
-  margin-top: -12px;
+  margin-left: 0.05em;
+  margin-top: -0.4em;
 }
 .card .mark.heart:after,
 .card .content.heart:after {
@@ -92,7 +92,7 @@ body {
 .card .content.spade:after,
 .card .content.club:after,
 .card .content.diamond:after {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .card .mark.upside-down {
@@ -102,8 +102,8 @@ body {
   transform: rotate(180deg);
   top: auto;
   left: auto;
-  bottom: 16px;
-  right: 24px;
+  bottom: 0.125em;
+  right: 0.125em;
 }
 
 .red {

@@ -1,19 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 import Card from "./card";
-
-export const card = {
-  rank: 0,
-  suit: 0,
-  flipped: false
-};
-
-export const actions = {
-  onReveal: action("onReveal"),
-  onFlip: action("onFlip")
-};
 
 storiesOf("Card", module).add("Shape", () => <Card flipped={true}></Card>);
 
