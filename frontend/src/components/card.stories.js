@@ -1,9 +1,8 @@
 import React from "react";
-
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-
-import Card from "../components/card";
+import { withInfo } from "@storybook/addon-info";
+import Card from "./card";
 
 export const card = {
   rank: 0,
@@ -16,17 +15,35 @@ export const actions = {
   onFlip: action("onFlip")
 };
 
-storiesOf("Playing Card", module)
-  .add("Back", () => <Card></Card>)
-  .add("Front", () => <Card flipped={true}></Card>);
+storiesOf("Card", module).add("Shape", () => <Card flipped={true}></Card>);
 
-storiesOf("Card Suits", module)
+storiesOf("Card/Playing Card/Back", module)
+  .add(
+    "Default",
+    withInfo("This is the back facing side of the playing card.")(() => (
+      <Card></Card>
+    ))
+  )
+  .add(
+    "Pattern No. 2",
+    withInfo("This is the back facing side of the playing card.")(() => (
+      <Card backPattern={2}></Card>
+    ))
+  )
+  .add(
+    "Pattern No. 3",
+    withInfo("This is the back facing side of the playing card.")(() => (
+      <Card backPattern={3}></Card>
+    ))
+  );
+/*
+storiesOf("Card/Playing Card/Suits", module)
   .add("Spades", () => <Card flipped={true} suit={0}></Card>)
   .add("Hearts", () => <Card flipped={true} suit={1}></Card>)
   .add("Clubs", () => <Card flipped={true} suit={2}></Card>)
   .add("Diamonds", () => <Card flipped={true} suit={3}></Card>);
 
-storiesOf("Card Ranks", module)
+storiesOf("Card/Playing Card/Ranks", module)
   .add("A", () => <Card flipped={true} rank={13}></Card>)
   .add("K", () => <Card flipped={true} rank={12}></Card>)
   .add("Q", () => <Card flipped={true} rank={11}></Card>)
@@ -40,8 +57,8 @@ storiesOf("Card Ranks", module)
   .add("4", () => <Card flipped={true} rank={3}></Card>)
   .add("3", () => <Card flipped={true} rank={2}></Card>)
   .add("2", () => <Card flipped={true} rank={1}></Card>);
-
-storiesOf("Spades", module)
+*/
+storiesOf("Card/Playing Card/Faces/Spades", module)
   .add("A", () => <Card flipped={true} rank={13} suit={0}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={0}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={0}></Card>)
@@ -56,7 +73,7 @@ storiesOf("Spades", module)
   .add("3", () => <Card flipped={true} rank={2} suit={0}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={0}></Card>);
 
-storiesOf("Hearts", module)
+storiesOf("Card/Playing Card/Faces/Hearts", module)
   .add("A", () => <Card flipped={true} rank={13} suit={1}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={1}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={1}></Card>)
@@ -70,7 +87,7 @@ storiesOf("Hearts", module)
   .add("4", () => <Card flipped={true} rank={3} suit={1}></Card>)
   .add("3", () => <Card flipped={true} rank={2} suit={1}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={1}></Card>);
-storiesOf("Clubs", module)
+storiesOf("Card/Playing Card/Faces/Clubs", module)
   .add("A", () => <Card flipped={true} rank={13} suit={2}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={2}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={2}></Card>)
@@ -84,7 +101,7 @@ storiesOf("Clubs", module)
   .add("4", () => <Card flipped={true} rank={3} suit={2}></Card>)
   .add("3", () => <Card flipped={true} rank={2} suit={2}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={2}></Card>);
-storiesOf("Diamonds", module)
+storiesOf("Card/Playing Card/Faces/Diamonds", module)
   .add("A", () => <Card flipped={true} rank={13} suit={3}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={3}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={3}></Card>)
@@ -98,38 +115,3 @@ storiesOf("Diamonds", module)
   .add("4", () => <Card flipped={true} rank={3} suit={3}></Card>)
   .add("3", () => <Card flipped={true} rank={2} suit={3}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={3}></Card>);
-/*
-    export default {
-  title: "Playing Card"
-};
-
-export const back = () => <Card></Card>;
-export const front = () => <Card flipped={true}></Card>;
-export const aceSpade = () => <Card flipped={true} suit={0} rank={0}></Card>;
-export const twoSpade = () => <Card flipped={true} suit={0} rank={1}></Card>;
-export const threeSpade = () => <Card flipped={true} suit={0} rank={2}></Card>;
-export const fourSpade = () => <Card flipped={true} suit={0} rank={3}></Card>;
-export const fiveSpade = () => <Card flipped={true} suit={0} rank={4}></Card>;
-export const sixSpade = () => <Card flipped={true} suit={0} rank={5}></Card>;
-export const sevenSpade = () => <Card flipped={true} suit={0} rank={6}></Card>;
-export const eightSpade = () => <Card flipped={true} suit={0} rank={7}></Card>;
-export const nineSpade = () => <Card flipped={true} suit={0} rank={8}></Card>;
-export const tenSpade = () => <Card flipped={true} suit={0} rank={9}></Card>;
-export const jackSpade = () => <Card flipped={true} suit={0} rank={10}></Card>;
-export const queenSpade = () => <Card flipped={true} suit={0} rank={11}></Card>;
-export const kingSpade = () => <Card flipped={true} suit={0} rank={12}></Card>;
-
-export const aceHeart = () => <Card flipped={true} suit={1} rank={0}></Card>;
-export const twoHeart = () => <Card flipped={true} suit={1} rank={1}></Card>;
-export const threeHeart = () => <Card flipped={true} suit={1} rank={2}></Card>;
-export const fourHeart = () => <Card flipped={true} suit={1} rank={3}></Card>;
-export const fiveHeart = () => <Card flipped={true} suit={1} rank={4}></Card>;
-export const sixHeart = () => <Card flipped={true} suit={1} rank={5}></Card>;
-export const sevenHeart = () => <Card flipped={true} suit={1} rank={6}></Card>;
-export const eightHeart = () => <Card flipped={true} suit={1} rank={7}></Card>;
-export const nineHeart = () => <Card flipped={true} suit={1} rank={8}></Card>;
-export const tenHeart = () => <Card flipped={true} suit={1} rank={9}></Card>;
-export const jackHeart = () => <Card flipped={true} suit={1} rank={12}></Card>;
-export const queenHeart = () => <Card flipped={true} suit={1} rank={11}></Card>;
-export const kingHeart = () => <Card flipped={true} suit={1} rank={12}></Card>;
-*/

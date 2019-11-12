@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+
 import "../css/Card.css";
+import "../css/Back-Pattern.css";
 
 const ranks = "A 2 3 4 5 6 7 8 9 10 J Q K".split(" ");
 //const suits = "♠︎ ♥︎ ♣︎ ♦︎".split(" ");
@@ -9,6 +11,7 @@ const getSuit = i => suits[i % 4 | 0];
 const getColor = i => ((i % 5 | 0) % 2 ? "red" : "black");
 
 function Card(props) {
+  const [backPattern, setBackPattern] = useState(1);
   const [rank, setRank] = useState("");
   const [color, setColor] = useState("");
   const [suit, setSuit] = useState("");
@@ -16,6 +19,8 @@ function Card(props) {
 
   useEffect(() => {
     console.log(props);
+
+    if (props.backPattern) setBackPattern(props.backPattern);
     if (props.flipped) setFlipped(props.flipped || false);
     if (props.rank || props.rank === 0) setRank(getRank(props.rank || 0));
 
@@ -25,7 +30,8 @@ function Card(props) {
     }
   }, []);
 
-  if (flipped === false) return <div className="card flipped"></div>;
+  if (flipped === false)
+    return <div className={`card flipped pattern-${backPattern}`}></div>;
   else
     return (
       <div className="card" style={{ color: color }}>
