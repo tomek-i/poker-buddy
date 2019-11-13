@@ -1,0 +1,8 @@
+{
+    "app_name": "Poker Buddy Backend",
+    "port": 3000,
+    "db": {
+        "host": "mongodb://localhost",
+        "name": "pokerbuddy"
+    }
+}
