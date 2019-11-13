@@ -4,7 +4,10 @@ import { configure, addDecorator } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs/react";
 import { addParameters } from "@storybook/react"; // <- or your storybook framework
 
+import "../src/css/Storybook.css";
 import "../src/css/Card.css";
+import "../src/css/Table.css";
+import "../src/css/Player.css";
 import "../src/css/Back-Pattern.css";
 
 addDecorator(withKnobs);

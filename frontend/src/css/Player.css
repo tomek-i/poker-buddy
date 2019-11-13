@@ -1,0 +1,124 @@
+.player {
+  position: absolute;
+}
+.player .avatar {
+  width: 3em;
+  height: 3em;
+  background-color: lightcoral;
+  border-radius: 100%;
+  position: relative;
+  box-shadow: 0.03em 0.1em 0px rgba(0, 0, 0, 0.4);
+  z-index: 20;
+}
+.player .avatar:after {
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translatex(-50%) translatey(-50%);
+  transform: translatex(-50%) translatey(-50%);
+  border-radius: 100%;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.player .name {
+  text-align: center;
+
+  color: #96e296;
+  padding: 5px 0;
+
+  box-sizing: border-box;
+  border: 2px solid #96e296;
+  border-radius: 5px;
+
+  text-overflow: ellipsis;
+  font-size: 1rem;
+
+  margin-top: 1em;
+  margin-bottom: 1em;
+  overflow: hidden;
+  position: relative;
+}
+
+.player.player-1 {
+  top: 0px;
+  left: 50%;
+  -webkit-transform: translatex(-50%) translatey(-50%);
+  transform: translatex(-50%) translatey(-50%);
+}
+.player.player-2 {
+  bottom: 0px;
+  left: 50%;
+  -webkit-transform: translatex(-50%) translatey(50%) rotatez(180deg);
+  transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.player.player-3 {
+  top: 50%;
+  left: 0px;
+  -webkit-transform: translatex(-50%) translatey(-50%) rotatez(-90deg);
+  transform: translatex(-50%) translatey(-50%) rotatez(-90deg);
+}
+.players .player.player-4 {
+  top: 50%;
+  right: 0px;
+  -webkit-transform: translatex(50%) translatey(-50%) rotatez(90deg);
+  transform: translatex(50%) translatey(-50%) rotatez(90deg);
+}
+
+.player.player-5 {
+  top: 0px;
+  left: 25%;
+  -webkit-transform: translatex(-50%) translatey(-50%);
+  transform: translatex(-50%) translatey(-50%);
+}
+.player.player-6 {
+  bottom: 0px;
+  left: 75%;
+  -webkit-transform: translatex(-50%) translatey(50%) rotatez(180deg);
+  transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.player.player-7 {
+  top: 0px;
+  left: 75%;
+  -webkit-transform: translatex(-50%) translatey(-50%);
+  transform: translatex(-50%) translatey(-50%);
+}
+.player.player-8 {
+  bottom: 0px;
+  left: 25%;
+  -webkit-transform: translatex(-50%) translatey(50%) rotatez(180deg);
+  transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+
+.player.player-2 .name {
+  -webkit-transform: rotatez(180deg);
+  transform: rotatez(180deg);
+}
+
+.player.player-3 .name {
+  -webkit-transform: rotatez(0deg);
+  transform: rotatez(0deg);
+}
+
+.player.player-4 .name {
+  -webkit-transform: rotatez(0deg);
+  transform: rotatez(0deg);
+}
+
+.player.player-6 .name {
+  -webkit-transform: rotatez(180deg);
+  transform: rotatez(180deg);
+}
+
+.player.player-8 .name {
+  -webkit-transform: rotatez(180deg);
+  transform: rotatez(180deg);
+}
+.player .hand {
+  width: max-content;
+}
+.player .card:not(:last-child) {
+  margin-right: 0.5em;
+}
