@@ -18,7 +18,12 @@ var UserSchema = new mongoose.Schema(
       match: [/\S+@\S+\.\S+/, "is invalid"],
       index: true
     },
-    image: String
+    image: {
+      type: String,
+      lowercase: true,
+      required: false,
+      default: ""
+    }
   },
   { timestamps: true }
 );
@@ -36,4 +41,4 @@ UserSchema.methods.setPassword = function(password){
   this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 */
-mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);

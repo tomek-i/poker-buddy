@@ -1,7 +1,30 @@
 const debug = require("debug")("controller:user");
+const validate = require("../validators/userValidator");
+const User = require("../models/user");
 
-exports.create = (req, res) => {
-  res.send("user create");
+exports.create = async (req, res, next) => {
+  debug("Validating request body");
+  const { error } = validate(req.body);
+
+  if (error) {
+    debug("Validation failed!", error);
+    // respond back with '400 Bad Request' with error details
+    return res.status(400).send(error.details[0].message);
+  }
+
+  const user = new User(req.body);
+  try {
+    debug("Saving User to database.", user);
+    await user.save();
+    debug("Saving successful", user);
+    return res.send(user);
+  } catch (error) {
+    const exception = new Error("Creating User failed!");
+    exception.status = 500;
+    exception.error = error;
+    debug("Saving to database failed!", exception);
+    next(exception);
+  }
 };
 
 exports.index = (req, res) => {
