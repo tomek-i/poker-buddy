@@ -9,6 +9,7 @@ exports.create = async (req, res, next) => {
   if (error) {
     debug("Validation failed!", error);
     // respond back with '400 Bad Request' with error details
+    //TODO: maybe send the whole error back?
     return res.status(400).send(error.details[0].message);
   }
 
@@ -19,6 +20,7 @@ exports.create = async (req, res, next) => {
     debug("Saving successful", user);
     return res.send(user);
   } catch (error) {
+    //TODO: create utility method to wrap "500 Internal Server Error" (and other common ones) messages
     const exception = new Error("Creating User failed!");
     exception.status = 500;
     exception.error = error;
