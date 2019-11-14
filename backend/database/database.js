@@ -22,7 +22,7 @@ async function connect() {
     */
 
     debug("Loading models ..");
-    require("./models");
+    require("../models");
   } catch (error) {
     const ex = new Error("Database connection failed.", error);
     debug(ex);
