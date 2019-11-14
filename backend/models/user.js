@@ -17,12 +17,6 @@ var UserSchema = new mongoose.Schema(
       required: [true, "can't be blank"],
       match: [/\S+@\S+\.\S+/, "is invalid"],
       index: true
-    },
-    image: {
-      type: String,
-      lowercase: true,
-      required: false,
-      default: ""
     }
   },
   { timestamps: true }

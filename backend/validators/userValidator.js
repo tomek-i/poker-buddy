@@ -2,11 +2,12 @@ const Joi = require("Joi");
 
 function validateUser(user) {
   const schema = {
-    username: Joi.string().required(),
-    email: Joi.string().email(),
-    image: Joi.string()
-      .uri()
-      .optional()
+    username: Joi.string()
+      .required()
+      .alphanum(),
+    email: Joi.string()
+      .email()
+      .required()
   };
   return Joi.validate(user, schema);
 }
