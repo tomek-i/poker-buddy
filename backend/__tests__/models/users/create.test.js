@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const UserModel = require("../../../models/user");
-const { setupDB } = require("../../jest-db-setup");
+const { setupDB } = require("../../../jest-db-setup");
 
 const userData = {
   username: "MyUsername",

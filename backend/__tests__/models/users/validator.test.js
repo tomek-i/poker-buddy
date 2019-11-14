@@ -16,6 +16,7 @@ describe("User Validator", () => {
     const { username, ...invalidUser } = validUser;
     const result = validate(invalidUser);
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("is required");
   });
 
@@ -25,6 +26,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("not allowed to be empty");
   });
 
@@ -34,6 +36,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain(
       "must only contain alpha-numeric characters"
     );
@@ -45,6 +48,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain(
       "must only contain alpha-numeric characters"
     );
@@ -54,6 +58,7 @@ describe("User Validator", () => {
     const { email, ...invalidUser } = validUser;
     const result = validate(invalidUser);
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("is required");
   });
 
@@ -61,6 +66,7 @@ describe("User Validator", () => {
     const { email, username, ...invalidUser } = validUser;
     const result = validate(invalidUser);
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("is required");
   });
 
@@ -70,6 +76,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("not allowed to be empty");
   });
 
@@ -79,6 +86,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("must be a valid email");
   });
 
@@ -88,6 +96,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("must be a valid email");
   });
 
@@ -97,6 +106,7 @@ describe("User Validator", () => {
     const result = validate(invalidUser);
 
     expect(result.error).not.toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toContain("must be a valid email");
   });
 

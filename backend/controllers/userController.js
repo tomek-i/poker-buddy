@@ -2,8 +2,7 @@ const debug = require("debug")("controller:user");
 const validate = require("../validators/userValidator");
 const User = require("../models/user");
 
-//changed from async/await to promise
-exports.create = (req, res, next) => {
+exports.create = async (req, res, next) => {
   debug("Validating request body");
   const { error } = validate(req.body);
 
@@ -15,27 +14,39 @@ exports.create = (req, res, next) => {
     //return res.status(400).send(error.details[0].message);
   }
 
-  User.create(req.body)
-    .then(result => {
-      debug("Saving successful", result);
-      return res.send(user);
-    })
-    .catch(error => {
-      //TODO: create utility method to wrap "500 Internal Server Error" (and other common ones) messages
-      const exception = new Error("Creating User failed!");
-      exception.status = 500;
-      exception.error = error;
-      debug("Saving to database failed!", exception);
-      next(exception);
-    });
+  try {
+    const result = await User.create(req.body);
+    debug("Saving successful", result);
+    return res.status(201).send(user);
+  } catch (error) {
+    //TODO: create utility method to wrap "500 Internal Server Error" (and other common ones) messages
+    const exception = new Error("Creating User failed!");
+    exception.status = 500;
+    exception.error = error;
+    debug("Saving to database failed!", exception);
+    next(exception);
+  }
 };
 
-exports.index = (req, res, next) => {
+/**
+ * Returns all users.
+ * @returns {?import('../models/user').UserModel[]} and array of all users
+ */
+exports.index = async (req, res, next) => {
   res.send("user read");
 };
-exports.update = (req, res, next) => {
+
+/**
+ * Returns the user with specified username.
+ * @return {?import('../models/user').UserModel} The user found with the specified username
+ */
+exports.findByUsername = async (req, res, next) => {
+  res.send("user read");
+};
+
+exports.update = async (req, res, next) => {
   res.send("user update");
 };
-exports.delete = (req, res, next) => {
+exports.delete = async (req, res, next) => {
   res.send("user delete");
 };

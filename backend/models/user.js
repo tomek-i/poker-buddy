@@ -1,6 +1,16 @@
 var mongoose = require("mongoose");
 
-var UserSchema = new mongoose.Schema(
+/**
+ * @typedef UserModel
+ * @type {object}
+ * @property {string} username - unique username
+ * @property {string} email - unique email
+ */
+
+/**
+ * @type {mongoose.Schema<UserModel>}
+ */
+const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -35,4 +45,8 @@ UserSchema.methods.setPassword = function(password){
   this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 */
+
+/**
+ * @type {UserModel}
+ */
 module.exports = mongoose.model("User", UserSchema);

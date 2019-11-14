@@ -1,6 +1,9 @@
 var router = require("express").Router();
 
-router.use("/", require("./users"));
+// url: api/*
+
+router.use("/user", require("./users"));
+
 //router.use("/profiles", require("./profiles"));
 
 /*
