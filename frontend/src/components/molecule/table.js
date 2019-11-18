@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Card from "./card";
+import { Card } from "../molecule/card";
 
-import "../css/Table.css";
+import "../../css/Table.css";
 
 function Table() {
   return (

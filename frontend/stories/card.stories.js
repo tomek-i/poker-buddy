@@ -1,11 +1,13 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
-import Card from "./card";
+import { Card } from "../src/components/molecule/card";
+import { Frame } from "../src/components/atoms/frame";
+import { Rank } from "../src/components/atoms/rank";
 
-storiesOf("Card", module).add("Shape", () => <Card flipped={true}></Card>);
+storiesOf("_old/Card", module).add("Shape", () => <Card flipped={true}></Card>);
 
-storiesOf("Card/Playing Card/Back", module)
+storiesOf("_old/Card/Playing Card/Back", module)
   .add(
     "Default",
     withInfo("This is the back facing side of the playing card.")(() => (
@@ -46,7 +48,7 @@ storiesOf("Card/Playing Card/Ranks", module)
   .add("3", () => <Card flipped={true} rank={2}></Card>)
   .add("2", () => <Card flipped={true} rank={1}></Card>);
 */
-storiesOf("Card/Playing Card/Faces/Spades", module)
+storiesOf("_old/Card/Playing Card/Aces/Spades", module)
   .add("A", () => <Card flipped={true} rank={13} suit={0}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={0}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={0}></Card>)
@@ -61,7 +63,7 @@ storiesOf("Card/Playing Card/Faces/Spades", module)
   .add("3", () => <Card flipped={true} rank={2} suit={0}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={0}></Card>);
 
-storiesOf("Card/Playing Card/Faces/Hearts", module)
+storiesOf("_old/Card/Playing Card/Faces/Hearts", module)
   .add("A", () => <Card flipped={true} rank={13} suit={1}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={1}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={1}></Card>)
@@ -75,7 +77,7 @@ storiesOf("Card/Playing Card/Faces/Hearts", module)
   .add("4", () => <Card flipped={true} rank={3} suit={1}></Card>)
   .add("3", () => <Card flipped={true} rank={2} suit={1}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={1}></Card>);
-storiesOf("Card/Playing Card/Faces/Clubs", module)
+storiesOf("_old/Card/Playing Card/Faces/Clubs", module)
   .add("A", () => <Card flipped={true} rank={13} suit={2}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={2}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={2}></Card>)
@@ -89,7 +91,7 @@ storiesOf("Card/Playing Card/Faces/Clubs", module)
   .add("4", () => <Card flipped={true} rank={3} suit={2}></Card>)
   .add("3", () => <Card flipped={true} rank={2} suit={2}></Card>)
   .add("2", () => <Card flipped={true} rank={1} suit={2}></Card>);
-storiesOf("Card/Playing Card/Faces/Diamonds", module)
+storiesOf("_old/Card/Playing Card/Faces/Diamonds", module)
   .add("A", () => <Card flipped={true} rank={13} suit={3}></Card>)
   .add("K", () => <Card flipped={true} rank={12} suit={3}></Card>)
   .add("Q", () => <Card flipped={true} rank={11} suit={3}></Card>)
