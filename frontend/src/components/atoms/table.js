@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-export function CardPlaceHolder(props) {
-  return <div></div>;
-}
 export function Table(props) {
-  const [color, setColor] = useState("#4aad4a");
-  const [colorFrame, setColorFrame] = useState("#114444");
-
-  useEffect(() => {
-    if (props.color) setColor(props.color);
-    if (props.colorFrame) setColorFrame(props.colorFrame);
-  }, []);
+  const [color, setColor] = useState(props.color || "#4aad4a");
+  const [colorFrame, setColorFrame] = useState(props.colorFrame || "#114444");
 
   const style = {
     width: "1000px",
@@ -18,7 +10,7 @@ export function Table(props) {
     backgroundColor: `${color}`,
     position: "absolute",
     //-webkit-transform: translateX(-50%) translateY(-50%);
-    transform: "translateX(-50%) translateY(-50%)",
+    //transform: "translateX(-50%) translateY(-50%)",
     borderRadius: "150px",
     position: "relative",
     border: `15px solid ${colorFrame}`,
