@@ -2,6 +2,6 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
-import Player from "./player";
+import { Table } from "../../src/components/atoms/table";
 
-storiesOf("Player", module).add("Player", () => <Player></Player>);
+storiesOf("Atoms/Table", module).add("default", () => <Table />);

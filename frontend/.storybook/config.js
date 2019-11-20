@@ -5,14 +5,21 @@ import { withKnobs } from "@storybook/addon-knobs/react";
 import { addParameters } from "@storybook/react"; // <- or your storybook framework
 
 import "../src/css/Storybook.css";
-import "../src/css/Card.css";
-import "../src/css/Table.css";
-import "../src/css/Player.css";
-import "../src/css/Back-Pattern.css";
+
+import "../src/css/card.css";
+import "../src/css/player-positions.css";
+import "../src/css/card-back-pattern.css";
+import "../src/css/poker-player.css";
+import "../stories/templates/styles.css";
+
+
+import centered from '@storybook/addon-centered/react';
+
+addDecorator(centered);
 
 addDecorator(withKnobs);
 
-const req = require.context("../src", true, /\.stories.js$/);
+const req = require.context("../stories", true, /\.stories.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
