@@ -11,6 +11,14 @@ const express = require("express");
 const cors = require("cors");
 const debug = require("debug")("app:init");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+//const bodyParser = require("body-parser");
+
+//use config module to get the secret, if no private key set, end the application
+if (!config.get("secret")) {
+  console.error("FATAL ERROR: secret is not defined.");
+  process.exit(1);
+}
 
 /**
  * App Variables
@@ -52,7 +60,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: DEBUG }));
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(cookieParser());
 if (DEBUG) {
   debug("morgan HTTP logging middleware enabled");
   app.use(morgan("dev"));
