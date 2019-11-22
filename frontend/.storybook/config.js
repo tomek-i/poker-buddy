@@ -15,7 +15,7 @@ import "../stories/templates/styles.css";
 
 import centered from "@storybook/addon-centered/react";
 
-addDecorator(centered);
+//addDecorator(centered);
 
 addDecorator(withKnobs);
 
