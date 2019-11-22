@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
+export function Label(props) {
+  return (
+    <Button variant="outlined" {...props}>
+      {props.text}
+    </Button>
+  );
+}
+/*
 export function Label(props) {
   const [color, setColor] = useState(props.color || "#96e296");
   const [text, setText] = useState(props.text || null);
@@ -25,6 +35,7 @@ export function Label(props) {
     marginTop: "1em",
     marginBottom: "1em",
     */
+/*
   };
   const combinedStyle = { ...style, ...props.style };
   return (
@@ -33,3 +44,4 @@ export function Label(props) {
     </div>
   );
 }
+*/
