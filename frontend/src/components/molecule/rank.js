@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Label } from "../atoms/label";
+import { Label2 } from "../atoms/label";
 
 //TODO: should be a molecule with LABEL
 export function Rank(props) {
@@ -7,10 +7,7 @@ export function Rank(props) {
     props.value ? props.value.toUpperCase() : null
   );
   const [suit, setSuit] = useState(getSymbol(props.suit) || null);
-  const [visible, setVisible] = useState(
-    props.visible === undefined ? true : props.visible
-  );
-  console.log("VISIBLE", props.visible);
+
   function getSymbol(item) {
     if (item === undefined || item === null) return null;
 
@@ -62,47 +59,45 @@ export function Rank(props) {
     fontWeight: "bold"
   };
 
-  if (visible)
-    return (
-      <>
-        <Label
-          text={value}
-          size="0.9em"
+  return (
+    <>
+      <Label2
+        text={value}
+        size="0.9em"
+        color={getColor(suit)}
+        align="left"
+        position="absolute"
+        display="block"
+        style={rankStyle}
+      >
+        <Label2
+          text={suit}
+          size="1em"
           color={getColor(suit)}
           align="left"
-          position="absolute"
           display="block"
-          style={rankStyle}
-        >
-          <Label
-            text={suit}
-            size="1em"
-            color={getColor(suit)}
-            align="left"
-            display="block"
-            style={suitStyle}
-          />
-        </Label>
+          style={suitStyle}
+        />
+      </Label2>
 
-        <Label
-          text={value}
-          size="0.9em"
+      <Label2
+        text={value}
+        size="0.9em"
+        color={getColor(suit)}
+        align="left"
+        position="absolute"
+        display="block"
+        style={{ ...rankStyle, ...upsideDown }}
+      >
+        <Label2
+          text={suit}
+          size="1em"
           color={getColor(suit)}
           align="left"
-          position="absolute"
           display="block"
-          style={{ ...rankStyle, ...upsideDown }}
-        >
-          <Label
-            text={suit}
-            size="1em"
-            color={getColor(suit)}
-            align="left"
-            display="block"
-            style={suitStyle}
-          />
-        </Label>
-      </>
-    );
-  else return null;
+          style={suitStyle}
+        />
+      </Label2>
+    </>
+  );
 }

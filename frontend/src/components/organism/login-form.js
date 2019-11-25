@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { InputBox } from "../molecule/inputbox";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export function LoginForm(props) {
   const [email, setEmail] = useState("");
@@ -19,23 +20,39 @@ export function LoginForm(props) {
           "0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12)"
       }}
     >
-      <InputBox label="Email" change={e => setEmail(e.target.value)} />
-      <InputBox
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        id="email"
+        label="Email Address"
+        name="email"
+        autoComplete="email"
+        autoFocus
+      />
+
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        name="password"
         label="Password"
         type="password"
-        change={e => setPassword(e.target.value)}
+        id="password"
+        autoComplete="current-password"
       />
       <div className="btn-box">
-        <button
-          className="btn btn-submit"
+        <Button
           type="submit"
-          onClick={e => {
-            e.preventDefault();
-            console.log([email, password]);
-          }}
+          fullWidth
+          variant="contained"
+          color="primary"
+          //className={classes.submit}
         >
-          SUBMIT
-        </button>
+          Submit
+        </Button>
 
         <button
           className="btn btn-cancel"

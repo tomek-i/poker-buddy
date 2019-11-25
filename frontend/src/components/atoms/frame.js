@@ -18,7 +18,10 @@ export function Frame(props) {
   };
 
   return (
-    <div className="frame" style={style}>
+    <div
+      style={{ ...style, ...props.style }}
+      className={"frame " + props.classes}
+    >
       {props.children}
     </div>
   );
