@@ -5,6 +5,16 @@ import Button from "@material-ui/core/Button";
 
 import styles from "../../css/modules/pokerplayer.module.css";
 
+/**
+ * TODO: need to make this smaller, and take out the redner styles for dealer/sb/bb
+ * Poker Player
+ * @property {string} name the players name
+ * @property {[]} hand the players hand
+ * @property {boolean} dealer determins if the player is the dealer
+ * @property {boolean} smallblind determins if the player is small blind
+ * @property {boolean} bigblind determins if the player is big blind
+ * @param {*} props
+ */
 export function PokerPlayer(props) {
   const [name, setName] = useState(props.name || "Player");
   const [hand, setHand] = useState(props.hand || []);
@@ -100,18 +110,14 @@ export function PokerPlayer(props) {
       className={`${styles.player} player-${(props.index || 0) + 1} `}
     >
       <Player name={name} />
-      <PlayerHandWrapper>
+      <div className={styles.playerhand}>
         {hand.map(card => (
           <Card {...card} />
         ))}
-      </PlayerHandWrapper>
+      </div>
       {ExtraRender()}
     </div>
   );
 }
 
 //codepen:https://codepen.io/rivy33/pen/ZoNvpw
-
-export function PlayerHandWrapper(props) {
-  return <div className={styles.playerhand}>{props.children}</div>;
-}

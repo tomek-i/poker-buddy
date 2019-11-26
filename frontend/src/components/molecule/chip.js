@@ -3,7 +3,7 @@ import styles from "../../css/modules/chip.module.css";
 //https://codepen.io/pmk/pen/GgrJRq
 
 /**
- *
+ * TODO: still in development / trialing
  * @param {*} props
  */
 export function Chip(props) {
