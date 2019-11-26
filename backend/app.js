@@ -91,6 +91,7 @@ db().catch(err => {
 /**
  * Routes Definitions
  */
+app.use(require("./middlewares/checkUser"));
 app.use(require("./routes"));
 
 /**
@@ -111,8 +112,6 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (DEBUG) {
   app.use(function(err, req, res, next) {
-    console.log(err.stack);
-
     res.status(err.status || 500);
 
     res.json({
