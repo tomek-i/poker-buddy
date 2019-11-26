@@ -1,5 +1,5 @@
 .pattern-1 {
-  background-color: hsl(34, 53%, 82%);
+  background-color: hsl(34, 53%, 82%) !important;
   background-image: repeating-linear-gradient(
       45deg,
       transparent 5px,
@@ -51,7 +51,7 @@
       hsla(5, 53%, 63%, 0) 140px,
       hsla(197, 62%, 11%, 0.5) 140px,
       hsla(197, 62%, 11%, 0.5) 160px
-    );
+    ) !important;
 }
 .pattern-2 {
   background-color: #556;

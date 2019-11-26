@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { TextBox } from "./textbox";
+import { Link } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
+/**
+ * Represents a player
+ * TODO: link should go or request or open more information about the player
+ * @property {string} name The name of the player
+ * @param {*} props
+ */
 export function Player(props) {
-  const [name, setName] = useState(props.name || "Player"); //TODO: there is an issue, if i dont pass in the name, it stays blank...
+  const [name, setName] = useState(props.name || "Player");
 
-  return <TextBox text={name}></TextBox>;
+  return (
+    <Typography>
+      <Link
+        href="#"
+        onClick={() => {
+          console.info("I'm a button.");
+        }}
+      >
+        {name}
+      </Link>
+    </Typography>
+  );
 }

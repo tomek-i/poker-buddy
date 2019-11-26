@@ -1,0 +1,12 @@
+.player {
+  position: absolute;
+  text-align: center;
+}
+
+.playerhand {
+  width: max-content;
+  margin: 10px 0;
+}
+.playerhand :not(:last-child) {
+  margin-right: var(--player-hand-card-margin-right, 15px);
+}

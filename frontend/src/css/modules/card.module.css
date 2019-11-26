@@ -1,0 +1,43 @@
+.card {
+  /* DEFAULT */
+  font-size: 1em;
+  overflow: hidden;
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  text-align: left;
+  font-weight: bold;
+}
+.suit {
+  margin-left: 0.09em;
+  margin-top: -0.4em;
+}
+.rank {
+  top: 0.125em;
+  left: 0.125em;
+  width: inherit;
+  position: absolute;
+}
+
+.upside {
+  transform: rotate(180deg);
+  top: auto;
+  left: auto;
+  bottom: 0.125em;
+  right: 0.125em;
+}
+
+.red {
+  color: var(--card-suit-color-red, #e1623f);
+}
+.black {
+  color: var(--card-suit-color-black, #0c0b13);
+}
+
+.card:not(:last-child) {
+  margin-right: 0.5em;
+}
