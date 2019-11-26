@@ -25,7 +25,7 @@ exports.create = async (req, res, next) => {
     if (userEmail || userUsername)
       return res.status(400).send("User already registered.");
 
-    console.log(req.body);
+    debug(req.body);
     user = new User({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
