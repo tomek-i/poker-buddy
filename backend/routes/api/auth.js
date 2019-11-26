@@ -8,6 +8,14 @@ const util = require("../../util/util");
 
 //TODO: UTIL
 
+router.get("/register", async (req, res) => {
+  res.render("register", {
+    user: req.user
+  });
+});
+router.get("/forgotpassword", async (req, res) => {
+  res.send("LOAD AND SHOW FORGOT PASSWORD PAGE");
+});
 router.post("/signup", (req, res, next) => {
   debug("SIGNUP CALLED");
   res.send("TODO: POST  signup");
