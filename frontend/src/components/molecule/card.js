@@ -7,14 +7,13 @@ export const Card = props => {
   const [value, setValue] = useState(props.value || "");
 
   if (suit !== "" && value !== "" && suit && value) {
-    console.log("show rank suit");
     return (
       <Frame>
         <Rank suit={suit} value={value} />
       </Frame>
     );
   } else {
-    console.log("show background");
+    //TODO: pattern ID from config or something
     return <Frame classes="pattern-1" />;
   }
 };

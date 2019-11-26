@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Frame } from "../atoms/frame";
-import { Rank } from "../molecule/rank";
 import { Player } from "../molecule/player";
 import { Card } from "../molecule/card";
 import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
 
-import "../../css/poker-player.css";
+import styles from "../../css/modules/pokerplayer.module.css";
 
 export function PokerPlayer(props) {
-  const [name, setName] = useState(props.name || "Player"); //TODO: there is an issue, if i dont pass in the name, it stays blank...
+  const [name, setName] = useState(props.name || "Player");
   const [hand, setHand] = useState(props.hand || []);
 
   const [dealer, setDealer] = useState(props.dealer || false);
   const [smallBlind, setSmallBlind] = useState(props.smallblind || false);
   const [bigBlind, setBigBlind] = useState(props.bigblind || false);
 
-  const styles = {
+  const style = {
     button: {
       height: 40,
       padding: "0 5px",
@@ -45,11 +42,6 @@ export function PokerPlayer(props) {
     if (bigBlind) setSmallBlind(false);
   }, [bigBlind]);
 
-  const playerStyle = {
-    position: "absolute",
-    textAlign: "center"
-  };
-
   function ExtraRender() {
     let extra = [];
     if (dealer)
@@ -61,8 +53,8 @@ export function PokerPlayer(props) {
             label: "dealer-label " // class name, e.g. `classes-nesting-label-x`
           }}
           style={{
-            ...styles.button,
-            ...styles.dealer
+            ...style.button,
+            ...style.dealer
           }}
         >
           DEALER
@@ -77,8 +69,8 @@ export function PokerPlayer(props) {
             label: "small-blind-label " // class name, e.g. `classes-nesting-label-x`
           }}
           style={{
-            ...styles.button,
-            ...styles.smallblind
+            ...style.button,
+            ...style.smallblind
           }}
         >
           SMALL BLIND
@@ -93,8 +85,8 @@ export function PokerPlayer(props) {
             label: "big-blind-label " // class name, e.g. `classes-nesting-label-x`
           }}
           style={{
-            ...styles.button,
-            ...styles.bigblind
+            ...style.button,
+            ...style.bigblind
           }}
         >
           BIG BLIND
@@ -105,8 +97,7 @@ export function PokerPlayer(props) {
   return (
     <div
       id={"player-id-" + (props.id || 0)}
-      className={`player-${(props.index || 0) + 1}`}
-      style={playerStyle}
+      className={`${styles.player} player-${(props.index || 0) + 1} `}
     >
       <Player name={name} />
       <PlayerHandWrapper>
@@ -122,14 +113,5 @@ export function PokerPlayer(props) {
 //codepen:https://codepen.io/rivy33/pen/ZoNvpw
 
 export function PlayerHandWrapper(props) {
-  return (
-    <div
-      style={{
-        width: "max-content",
-        margin: "10px 0"
-      }}
-    >
-      {props.children}
-    </div>
-  );
+  return <div className={styles.playerhand}>{props.children}</div>;
 }
