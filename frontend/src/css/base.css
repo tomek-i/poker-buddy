@@ -1,3 +1,33 @@
-body {
-  font-size: 24px;
+:root {
+  --default-font-size: 24px;
+
+  /* CARD */
+  --card-width: 3.5em;
+  --card-height: 5em;
+  --card-border-radius: 0.25em;
+  --card-color: #ccc5b3;
+  --card-suit-color-red: #e1623f;
+  --card-suit-color-black: #0c0b13;
+
+  /* PLAYER */
+  --player-hand-card-margin-right: 0.416em;
+
+  /* TABLE */
+  --table-corner-radius: 6.25em;
+  --table-width: 41.667em;
+  --table-height: 16.667em;
+
+  --table-card-margin-right: 0.25em;
+
+  --table-card-place-width: 19.5em;
+  --table-card-place-height: auto;
+  --table-card-place-padding: 0.25em;
+
+  font-size: var(--default-font-size, 24px);
+  /*
+  should be loaded by default
+
+      font-family: "Nunito Sans", -apple-system, "San Francisco", "Segoe UI",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+    */
 }

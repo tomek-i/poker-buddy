@@ -1,8 +1,8 @@
 .frame {
-  width: 3.5em;
-  height: 5em;
-  background: #ccc5b3;
-  border-radius: 0.25em;
+  width: var(--card-width, 3.5em);
+  height: var(--card-height, 5em);
+  background: var(--card-color, #ccc5b3);
+  border-radius: var(--card-border-radius, 0.25em);
   display: inline-block;
   position: relative;
   overflow: hidden;

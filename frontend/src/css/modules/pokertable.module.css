@@ -5,11 +5,11 @@
 
 .cardplace {
   border: 5px solid yellow;
-  height: 150px;
-  width: 20.8em;
+  height: var(--table-card-place-height);
+  width: var(--table-card-place-width);
   position: absolute;
   border-radius: 10px;
-  padding: 10px;
+  padding: var(--table-card-place-padding);
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -17,5 +17,5 @@
 }
 
 .cardplace :not(:last-child) {
-  margin-right: 12px;
+  margin-right: var(--table-card-margin-right, 12px);
 }

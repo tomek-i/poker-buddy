@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
-export function Player(props) {
-  const [name, setName] = useState(props.name || "Player"); //TODO: there is an issue, if i dont pass in the name, it stays blank...
+import { Link } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
-  return <Button variant="outlined">{name}</Button>;
+export function Player(props) {
+  const [name, setName] = useState(props.name || "Player");
+
+  return (
+    <Typography>
+      <Link
+        href="#"
+        onClick={() => {
+          console.info("I'm a button.");
+        }}
+      >
+        {name}
+      </Link>
+    </Typography>
+  );
 }

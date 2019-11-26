@@ -1,4 +1,5 @@
 .card {
+  /* DEFAULT */
   font-size: 1em;
   overflow: hidden;
   display: block;
@@ -20,7 +21,6 @@
   left: 0.125em;
   width: inherit;
   position: absolute;
-  font-size: 1em;
 }
 
 .upside {
@@ -32,15 +32,12 @@
 }
 
 .red {
-  color: #e1623f;
+  color: var(--card-suit-color-red, #e1623f);
 }
 .black {
-  color: #0c0b13;
+  color: var(--card-suit-color-black, #0c0b13);
 }
 
 .card:not(:last-child) {
-  margin-right: 0.5em;
-}
-div.frame:not(:last-child) {
   margin-right: 0.5em;
 }

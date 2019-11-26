@@ -8,5 +8,5 @@
   margin: 10px 0;
 }
 .playerhand :not(:last-child) {
-  margin-right: 0.5em;
+  margin-right: var(--player-hand-card-margin-right, 15px);
 }
