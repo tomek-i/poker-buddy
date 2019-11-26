@@ -84,11 +84,12 @@ UserSchema.methods.generateAuthToken = function() {
 
   const d = new Date();
 
-  const calculatedExpiresIn =
-    d.getTime() + 60 * 60 * 1000 - (d.getTime() - d.getMilliseconds()) / 1000;
-
   const token = jwt.sign(
-    { _id: this._id, isAdmin: this.isAdmin },
+    {
+      _id: this._id
+      //  username: this.username,
+      //  isAdmin: this.isAdmin
+    },
     config.get("secret"),
     {
       algorithm: algo,

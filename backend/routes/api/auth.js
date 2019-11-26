@@ -3,22 +3,10 @@ var router = require("express").Router();
 const jwt = require("jsonwebtoken");
 var User = require("../../models/user");
 const config = require("config");
+const util = require("../../util/util");
 // url: /auth/*
 
 //TODO: UTIL
-
-function msToTime(duration) {
-  var milliseconds = parseInt((duration % 1000) / 100),
-    seconds = Math.floor((duration / 1000) % 60),
-    minutes = Math.floor((duration / (1000 * 60)) % 60),
-    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
-}
 
 router.post("/signup", (req, res, next) => {
   debug("SIGNUP CALLED");
@@ -40,7 +28,7 @@ router.post("/login", (req, res, next) => {
       const decoded = jwt.decode(token);
       debug("iat: ", new Date(decoded.iat * 1000));
       debug("exp: ", new Date(decoded.exp * 1000));
-      debug("dif: ", msToTime((decoded.exp - decoded.iat) * 1000));
+      debug("dif: ", util.msToTime((decoded.exp - decoded.iat) * 1000));
 
       payload = jwt.verify(token, config.get("secret"));
     } catch (error) {
@@ -52,7 +40,7 @@ router.post("/login", (req, res, next) => {
         // if the error thrown is because the JWT is unauthorized, return a 401 error
         return res.status(401).end();
       } else {
-        debug("bad request");
+        debug("bad request", error);
         // otherwise, return a bad request error
         return res.status(400).end();
       }
@@ -106,6 +94,8 @@ router.post("/login", (req, res, next) => {
             maxAge: config.get("jwt.expiry") * 1000
           });
           debug("Sending OK response");
+
+          return res.redirect("/");
           return res.send("TODO: POST  login");
         } else {
           debug("Sending 401 response");

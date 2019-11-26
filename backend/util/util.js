@@ -1,43 +1,12 @@
-const HTTPStatusError = {};
+exports.msToTime = function msToTime(duration) {
+  var milliseconds = parseInt((duration % 1000) / 100),
+    seconds = Math.floor((duration / 1000) % 60),
+    minutes = Math.floor((duration / (1000 * 60)) % 60),
+    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-HTTPStatusError.Info = {};
-HTTPStatusError.Success = {};
-HTTPStatusError.Redirection = {};
-HTTPStatusError.Client = {};
-HTTPStatusError.Server = {};
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-HTTPStatusError.Generic = (message, code, err) => {
-  const error = new Error(message);
-  error.status = code;
-  error.error = err;
-  return error;
+  return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 };
-
-HTTPStatusError.Client.BadRequest = (message, err) =>
-  HTTPStatusError.Generic(message, 400, err);
-HTTPStatusError.Client.Forbidden = (message, err) =>
-  HTTPStatusError.Generic(message, 403, err);
-HTTPStatusError.Client.Unauthorized = (message, err) =>
-  HTTPStatusError.Generic(message, 401, err);
-HTTPStatusError.Client.NotFound = (message, err) =>
-  HTTPStatusError.Generic(message, 404, err);
-
-HTTPStatusError.Server.InternalError = (message, err) =>
-  HTTPStatusError.Generic(message, 500, err);
-
-module.exports = HTTPStatusError;
-
-/*
-class ServerExceptions {
-  static Generic(message, code, err) {
-    const error = new Error(message);
-    error.status = code;
-    error.error = err;
-    return error;
-  }
-  static InternalError(message, err) {
-    return this.Generic(message, 500, err);
-  }
-}
-
-*/

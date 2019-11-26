@@ -12,6 +12,7 @@ const cors = require("cors");
 const debug = require("debug")("app:init");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+var hbs = require("express-handlebars");
 //const bodyParser = require("body-parser");
 
 //use config module to get the secret, if no private key set, end the application
@@ -61,6 +62,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
+app.engine(
+  "hbs",
+  hbs({
+    extname: "hbs"
+    // defaultView: "default",
+    // layoutsDir: __dirname + "/views/pages/",
+    // partialsDir: __dirname + "/views/partials/"
+  })
+);
+
 if (DEBUG) {
   debug("morgan HTTP logging middleware enabled");
   app.use(morgan("dev"));

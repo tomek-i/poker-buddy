@@ -1,7 +1,7 @@
 var router = require("express").Router();
 
-// url: api/*
+// url: admin/*
 
-router.use("/user", require("./users"));
+router.use("/", require("./admins"));
 
 module.exports = router;
