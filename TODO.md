@@ -5,3 +5,4 @@
 - create login form
 - create sign up form
 - create contact form
+- create util function to parse jwt token
