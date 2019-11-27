@@ -1,8 +1,7 @@
 const debug = require("debug")("controller:user");
 const validate = require("../validators/userValidator");
 const User = require("../models/user");
-const auth = require("../middlewares/auth");
-const bcrypt = require("bcrypt");
+
 //var passport = require('passport');
 
 exports.create = async (req, res, next) => {
