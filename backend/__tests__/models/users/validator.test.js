@@ -1,9 +1,11 @@
 const validate = require("../../../validators/userValidator");
 
+//TODO: password tests + ensure its encrypted
 describe("User Validator", () => {
   const validUser = {
-    username: "tom",
-    email: "tom@example.com"
+    username: "tomek",
+    email: "tom@example.com",
+    password: "Mondfahrt?"
   };
 
   test("with a valid user will pass", () => {

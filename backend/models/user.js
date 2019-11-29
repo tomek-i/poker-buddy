@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      // required: true,
       minlength: 6,
       maxlength: 255
     },
@@ -81,8 +81,6 @@ UserSchema.methods.generateAuthToken = function() {
   const expi = config.get("jwt.expiry");
   debug("algorithm used: ", algo);
   debug("expiry used: ", expi);
-
-  const d = new Date();
 
   const token = jwt.sign(
     {
