@@ -1,5 +1,6 @@
 # TODO
 
+- CHANGE how MODE and DEBUG work with ENV file and how TEST behaves and CORS
 - Pull out base styling of components to CSS file
 - Either Change the component used or remove click on Dealer/SM/BB badges
 - create login form
