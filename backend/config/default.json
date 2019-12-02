@@ -1,13 +1,20 @@
 {
     "app_name": "Poker Buddy Backend",
     "port": 3000,
-    "secret": "DEVELOPMENTONLY",
+    "debug": "app:*,db:*,controller:*,auth:*",
+    "mode": "DEBUG",
     "jwt": {
         "algorithm": "HS256",
         "expiry": 600
     },
     "db": {
         "host": "mongodb://localhost",
-        "name": "pokerbuddy"
+        "name": "pokerbuddy",
+        "seed": true
+    },
+    "admin": {
+        "username": "admin",
+        "email": "admin@localhost.local",
+        "password": "admin123"
     }
 }

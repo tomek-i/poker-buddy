@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema(
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
       index: true,
-      minlength: 4,
+      minlength: 3,
       maxlength: 15
     },
     email: {
@@ -97,20 +97,6 @@ UserSchema.methods.generateAuthToken = function() {
   debug("Generated Token: ", token);
   return token;
 };
-
-/*
-TODO: PASSWORD HASHING
-
-UserSchema.methods.validPassword = function(password) {
-  var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-  return this.hash === hash;
-};
-
-UserSchema.methods.setPassword = function(password){
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-};
-*/
 
 /**
  * @type {UserModel}

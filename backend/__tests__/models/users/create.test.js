@@ -6,6 +6,8 @@ const userData = {
   username: "MyUsername",
   email: "email@example.com"
 };
+
+//TODO: need more test cases for the DB schema
 /**
  *  Insert User into Database successfully. (Test Normal Use Case)
  *  Insert User with Invalid Field. (Test on Schema)

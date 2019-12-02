@@ -6,3 +6,14 @@
 - create sign up form
 - create contact form
 - create util function to parse jwt token
+
+## TESTS
+
+### USER MODEL / SCHEMA / VALIDATION
+
+- Need to write more test for the the schema itself
+
+### GAME MODEL / SCHEMA / VALIDATION
+
+- Need to write tests against the DB Schema
+- Need to write tests for the validator

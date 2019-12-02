@@ -1,0 +1,14 @@
+{
+    "app_name": "Test Scenario",
+    "debug": "test:*",
+    "mode": "DEBUG",
+    "port": 3000,
+    "jwt": {
+        "algorithm": "HS256",
+        "expiry": 300
+    },
+    "db": {
+        "host": "mongodb://localhost",
+        "name": "pokerbuddy_test"
+    }
+}

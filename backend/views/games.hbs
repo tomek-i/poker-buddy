@@ -1,0 +1,29 @@
+{{#if games}}
+<h1> Played Games</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">No. Players</th>
+            <th scope="col">Date Recorded</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {{#each games}}
+        <tr>
+            <th scope="row">{{_id}}</th>
+            <td>{{players.length}}</td>
+            <td>{{formatDate  createdAt "mmmm d, yyyy - HH:MM TT"}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+{{else}}
+
+<h2> sorry but there are no games recorded yet </h2>
+
+{{/if}}

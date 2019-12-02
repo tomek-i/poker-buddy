@@ -42,7 +42,8 @@ const GameSchema = new mongoose.Schema(
     },
 
     winner_hand: {
-      type: [CardSchema]
+      type: [CardSchema],
+      default: null
     },
 
     second_id: {
@@ -51,11 +52,13 @@ const GameSchema = new mongoose.Schema(
     },
 
     second_hand: {
-      type: [CardSchema]
+      type: [CardSchema],
+      default: null
     },
 
     table_cards: {
-      type: [CardSchema]
+      type: [CardSchema],
+      default: null
     }
   },
   { timestamps: true }

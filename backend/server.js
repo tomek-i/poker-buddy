@@ -1,4 +1,4 @@
-// app.js
+// server.js
 
 /**
  * Required External Modules
@@ -25,7 +25,7 @@ if (!config.get("secret")) {
  * App Variables
  */
 const app = express();
-const port = config.get("port") || 3000;
+debug("APP MODE: ", app.get("env"));
 const APP_MODE = config.get("mode");
 const DEBUG =
   config.get("mode") === "DEBUG" || app.get("env") === "development";
@@ -67,7 +67,8 @@ app.set("view engine", "hbs");
 app.engine(
   "hbs",
   hbs({
-    extname: "hbs"
+    extname: "hbs",
+    helpers: require("./plugins/handlebars.helpers").helpers
     // defaultView: "default",
     // layoutsDir: __dirname + "/views/pages/",
     // partialsDir: __dirname + "/views/partials/"
@@ -83,10 +84,13 @@ if (DEBUG) {
  * Database Activation
  */
 const db = require("./database");
-db().catch(err => {
+
+try {
+  db();
+} catch (error) {
   debug("Unable to connect to database.", err);
   process.exit(1);
-});
+}
 
 /**
  * Routes Definitions
@@ -135,11 +139,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-/**
- * Server Activation
- */
-
-app.listen(port, () => {
-  debug("listening on port", port);
-  debug(`${APP_NAME} ready! visit: http://localhost:${port}`);
-});
+module.exports = app;

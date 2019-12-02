@@ -40,7 +40,7 @@ exports.create = async (req, res, next) => {
 
     const token = user.generateAuthToken();
     res
-      .header("x-auth-token", token)
+      .header("token", token)
       .status(201)
       .send(user);
   } catch (error) {
@@ -58,7 +58,7 @@ exports.create = async (req, res, next) => {
  * @returns {?import('../models/user').UserModel[]} and array of all users
  */
 exports.index = async (req, res, next) => {
-  res.send("user read");
+  res.send("user index");
 };
 
 exports.current = async (req, res, next) => {
