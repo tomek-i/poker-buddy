@@ -2,8 +2,6 @@ const debug = require("debug")("controller:user");
 const validate = require("../validators/userValidator");
 const User = require("../models/user");
 
-//var passport = require('passport');
-
 exports.create = async (req, res, next) => {
   debug("Validating request body");
   const { error } = validate(req.body);
@@ -33,13 +31,12 @@ exports.create = async (req, res, next) => {
       email: req.body.email,
       password: req.body.password
     });
-    // handled in schema
-    //user.password = await bcrypt.hash(user.password, 10);
 
     const result = await user.save();
     debug("Saving successful", result);
 
     const token = user.generateAuthToken();
+    res.cookie("token", token);
     res
       .header("token", token)
       .status(201)
@@ -78,6 +75,7 @@ exports.findByUsername = async (req, res, next) => {
 exports.findUserGames = async (req, res, next) => {
   res.send("user games");
 };
+
 exports.findById = async (req, res, next) => {
   const user = await User.findById(req.params.id).select("-password");
   if (user) res.send(user);

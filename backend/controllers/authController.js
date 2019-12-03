@@ -1,5 +1,6 @@
 const debug = require("debug")("controller:auth");
 const User = require("../models/user");
+const config = require("config");
 
 exports.index = async (req, res, nect) => {
   res.send("RENDER LOGIN PAGE");
@@ -85,12 +86,10 @@ exports.login = async (req, res, next) => {
           debug("Setting cookie");
           // set the cookie as the token string, with a similar max age as the token
           // here, the max age is in milliseconds, so we multiply by 1000
-          res.cookie("token", token, {
-            maxAge: config.get("jwt.expiry") * 1000
-          });
+          res.cookie("token", token);
           debug("Sending OK response");
 
-          return res.redirect("/");
+          return res.header("token", token).redirect("/");
         } else {
           debug("Sending 401 response");
           return res.status(401).end();
