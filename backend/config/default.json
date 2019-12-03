@@ -1,7 +1,6 @@
 {
     "app_name": "Poker Buddy Backend",
     "port": 3000,
-    "debug": "app:*,db:*,controller:*,auth:*",
     "mode": "DEBUG",
     "jwt": {
         "algorithm": "HS256",

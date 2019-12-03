@@ -7,8 +7,9 @@ const port = config.get("port") || 3000;
 /**
  * Server Activation
  */
+
 debug("listening");
-server.listen(port, () => {
+server.listen(port, async () => {
   debug("listening on port", port);
   debug(`server ready! visit: http://localhost:${port}`);
 });

@@ -1,7 +1,6 @@
 {
     "app_name": "Test Scenario",
-    "debug": "test:*",
-    "mode": "DEBUG",
+    "mode": "TEST",
     "port": 3000,
     "jwt": {
         "algorithm": "HS256",

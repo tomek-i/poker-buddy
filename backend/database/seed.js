@@ -1,6 +1,29 @@
 const UserModel = require("../models/user");
 const debug = require("debug")("db:seed");
-async function createPlayers() {
+
+exports.createAdmin = async function CreateAdmin() {
+  UserModel.countDocuments({ isAdmin: true }, async (err, result) => {
+    if (result === 0) {
+      const adminData = {
+        username: config.get("admin.username"),
+        password: config.get("admin.password"),
+        email: config.get("admin.email"),
+        isAdmin: true
+      };
+
+      debug("No admin user found, creating admin account.", adminData);
+      try {
+        const admin = await new UserModel(adminData).save();
+        debug("Admin successfully created: ", admin);
+      } catch (error) {
+        debug("Creating admin account failed!", error);
+        process.exit(1);
+      }
+    }
+  });
+};
+
+exports.createPlayers = async function createPlayers() {
   const playerData = [
     {
       username: "tomek",
@@ -55,5 +78,4 @@ async function createPlayers() {
       reject(error);
     }
   });
-}
-module.exports = createPlayers;
+};

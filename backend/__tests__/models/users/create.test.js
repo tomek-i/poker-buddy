@@ -17,7 +17,7 @@ const userData = {
 setupDB("create-user-testing");
 
 describe("Create user in Database", () => {
-  it("create & save user successfully", async () => {
+  it("create & save user successfully", async done => {
     const validUser = new UserModel(userData);
     const savedUser = await validUser.save();
     // Object Id should be defined when successfully saved to MongoDB.
@@ -25,11 +25,12 @@ describe("Create user in Database", () => {
     expect(savedUser.username).toBe(userData.username.toLowerCase());
     expect(savedUser.email).toBe(userData.email.toLowerCase());
     expect(savedUser.image).toBe(userData.image);
+    done();
   });
 
   // Test Schema is working!!!
   // You shouldn't be able to add in any field that isn't defined in the schema
-  it("insert user successfully, but the field does not defined in schema should be undefined", async () => {
+  it("insert user successfully, but the field does not defined in schema should be undefined", async done => {
     const userWithInvalidField = new UserModel({
       username: "TekLoon",
       email: "example@email.com",
@@ -38,11 +39,12 @@ describe("Create user in Database", () => {
     const savedUserWithInvalidField = await userWithInvalidField.save();
     expect(savedUserWithInvalidField._id).toBeDefined();
     expect(savedUserWithInvalidField.nickname).toBeUndefined();
+    done();
   });
 
   // Test Validation is working!!!
   // It should told us the errors in on gender field.
-  it("create user without required field should fail", async () => {
+  it("create user without required field should fail", async done => {
     const userWithoutRequiredField = new UserModel({
       email: "test@example.com"
     });
@@ -55,5 +57,6 @@ describe("Create user in Database", () => {
     }
     expect(err).toBeInstanceOf(mongoose.Error.ValidationError);
     expect(err.errors.username).toBeDefined();
+    done();
   });
 });

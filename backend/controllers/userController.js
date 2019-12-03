@@ -58,12 +58,8 @@ exports.create = async (req, res, next) => {
  * @returns {?import('../models/user').UserModel[]} and array of all users
  */
 exports.index = async (req, res, next) => {
-  res.send("user index");
-};
-
-exports.current = async (req, res, next) => {
-  const user = await User.findById(req.user._id).select("-password");
-  res.send(user);
+  const users = await User.find().select("_id username email");
+  res.send(users);
 };
 
 /**
@@ -71,14 +67,28 @@ exports.current = async (req, res, next) => {
  * @return {?import('../models/user').UserModel} The user found with the specified username
  */
 exports.findByUsername = async (req, res, next) => {
-  res.send("user read");
+  const user = await User.findOne({ username: req.params.username }).select(
+    "-password"
+  );
+  if (user) res.send(user);
+  else next();
+};
+
+exports.findUserGames = async (req, res, next) => {
+  res.send("user games");
 };
 exports.findById = async (req, res, next) => {
-  res.send("user read");
+  const user = await User.findById(req.params.id).select("-password");
+  if (user) res.send(user);
+  else next();
 };
 
 exports.findByEmail = async (req, res, next) => {
-  res.send("user read");
+  const user = await User.findOne({ email: req.params.email }).select(
+    "-password"
+  );
+  if (user) res.send(user);
+  else next();
 };
 
 exports.update = async (req, res, next) => {

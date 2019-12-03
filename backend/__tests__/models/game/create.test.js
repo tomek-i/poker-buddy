@@ -24,7 +24,7 @@ const player2Data = {
 setupDB("create-game-testing");
 
 describe("Create game in Database", () => {
-  it("create & save a new game with 2 players successfully", async () => {
+  it("create & save a new game with 2 players successfully", async done => {
     const game = new GameModel();
 
     const [player1, player2] = await Promise.all([
@@ -38,9 +38,10 @@ describe("Create game in Database", () => {
 
     expect(savedGame._id).toBeDefined();
     expect(savedGame.players.length).toBe(2);
+    done();
   });
 
-  it("create & save a new game with 1 player successfully", async () => {
+  it("create & save a new game with 1 player successfully", async done => {
     const game = new GameModel();
 
     const player1 = await new UserModel(player1Data).save();
@@ -51,6 +52,7 @@ describe("Create game in Database", () => {
 
     expect(savedGame._id).toBeDefined();
     expect(savedGame.players.length).toBe(1);
+    done();
   });
 
   //TODO: save with table cards

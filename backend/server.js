@@ -25,8 +25,8 @@ if (!config.get("secret")) {
  * App Variables
  */
 const app = express();
-debug("APP MODE: ", app.get("env"));
 const APP_MODE = config.get("mode");
+const TESTING = config.get("mode") === "TEST" || app.get("env") === "test";
 const DEBUG =
   config.get("mode") === "DEBUG" || app.get("env") === "development";
 const APP_NAME = config.get("app_name");
@@ -39,24 +39,26 @@ debug(`application '${APP_NAME}' booting ...`);
 debug("running in mode:", APP_MODE);
 
 let whitelist = [];
-if (DEBUG !== true) {
-  whitelist.concat(["example.com"]);
-}
-debugCors("cors whitelist", whitelist);
-const corsOptions = {
-  origin: function(origin, callback) {
-    debugCors("cors Origin", origin);
-    const isWhitelisted = whitelist.indexOf(origin) !== -1;
-    debugCors("origin whitelisted?", isWhitelisted);
-    if (isWhitelisted || DEBUG) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
-};
+if (DEBUG !== true && TESTING !== true) {
+  whitelist.concat(["localhost", "127.0.0.1", "example.com"]);
 
-app.use(cors(corsOptions));
+  debugCors("cors whitelist", whitelist);
+  const corsOptions = {
+    origin: function(origin, callback) {
+      debugCors("cors Origin", origin);
+      const isWhitelisted = whitelist.indexOf(origin) !== -1;
+      debugCors("origin whitelisted?", isWhitelisted);
+      if (isWhitelisted || DEBUG) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    }
+  };
+
+  app.use(cors(corsOptions));
+}
+
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -75,7 +77,7 @@ app.engine(
   })
 );
 
-if (DEBUG) {
+if (DEBUG && TESTING === false) {
   debug("morgan HTTP logging middleware enabled");
   app.use(morgan("dev"));
 }
@@ -88,9 +90,20 @@ const db = require("./database");
 try {
   db();
 } catch (error) {
-  debug("Unable to connect to database.", err);
+  debug("Unable to connect to database.", error);
   process.exit(1);
 }
+/** CREATE ADMIN ACCOUNT, SEED DATABASE */
+/*if (config.get("db.seed")) {
+    try {
+      debug("seeding players");
+      await createPlayers();
+      debug("seeding players completed");
+    } catch (error) {
+      debug("seeding players failed.", error);
+    }
+  }
+*/
 
 /**
  * Routes Definitions
