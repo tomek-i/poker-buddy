@@ -77,21 +77,19 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
 //custom method to generate authToken
 UserSchema.methods.generateAuthToken = function() {
   debug("signing token");
-  const algo = config.get("jwt.algorithm");
-  const expi = config.get("jwt.expiry");
-  debug("algorithm used: ", algo);
-  debug("expiry used: ", expi);
+  const algorithm = config.get("jwt.algorithm");
+  const expiry = config.get("jwt.expiry");
+  debug("algorithm used: ", algorithm);
+  debug("expiry used: ", expiry);
 
   const token = jwt.sign(
     {
       _id: this._id
-      //  username: this.username,
-      //  isAdmin: this.isAdmin
     },
     config.get("secret"),
     {
-      algorithm: algo,
-      expiresIn: expi // seconds or a timespan
+      algorithm: algorithm,
+      expiresIn: expiry
     }
   );
   debug("Generated Token: ", token);
