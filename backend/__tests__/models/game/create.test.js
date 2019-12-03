@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const GameModel = require("../../../models/game");
 const UserModel = require("../../../models/user");
 const { setupDB } = require("../../../jest-db-setup");
-
+setupDB("create-game-testing");
 const player1Data = {
   username: "username1",
   password: "password1",
@@ -20,8 +20,6 @@ const player2Data = {
  *  Insert User with Invalid Field. (Test on Schema)
  *  Insert User without Required Field. (Test on Validation)
  **/
-
-setupDB("create-game-testing");
 
 describe("Create game in Database", () => {
   it("create & save a new game with 2 players successfully", async done => {

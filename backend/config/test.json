@@ -8,6 +8,7 @@
     },
     "db": {
         "host": "mongodb://localhost",
-        "name": "pokerbuddy_test"
+        "name": "pokerbuddy_test",
+        "seed": false
     }
 }

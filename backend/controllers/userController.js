@@ -12,6 +12,7 @@ exports.create = async (req, res, next) => {
     debug("Validation failed!", error);
     // respond back with '400 Bad Request' with error details
     //maybe send the whole error back? maybe with next?
+
     next(error);
     //return res.status(400).send(error.details[0].message);
   }

@@ -13,8 +13,8 @@ router.get("/:id/games", controller.findUserGames);
 
 /* need to be authenticated + authenticated user needs to be admin for the below */
 
-router.post("/create", [auth, isAdmin], controller.create);
-router.patch("/:id", [auth, isAdmin], controller.update);
-router.delete("/:id", [auth, isAdmin], controller.delete);
+router.post("/create", /*[auth, isAdmin],*/ controller.create);
+router.patch("/:id", /*[auth, isAdmin],*/ controller.update);
+router.delete("/:id", /*[auth, isAdmin],*/ controller.delete);
 
 module.exports = router;

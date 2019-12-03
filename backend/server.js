@@ -93,17 +93,6 @@ try {
   debug("Unable to connect to database.", error);
   process.exit(1);
 }
-/** CREATE ADMIN ACCOUNT, SEED DATABASE */
-/*if (config.get("db.seed")) {
-    try {
-      debug("seeding players");
-      await createPlayers();
-      debug("seeding players completed");
-    } catch (error) {
-      debug("seeding players failed.", error);
-    }
-  }
-*/
 
 /**
  * Routes Definitions

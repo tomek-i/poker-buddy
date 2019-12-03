@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon ./start.js",
     "ui": "browser-sync start --proxy=localhost:3000 --files='**/*.css, **/*.hbs, **/*.js' --ignore=node_modules --reload-delay 10 --no-ui --no-notify",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:cover": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "keywords": [],

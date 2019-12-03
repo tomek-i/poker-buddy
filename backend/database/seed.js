@@ -1,5 +1,6 @@
 const UserModel = require("../models/user");
 const debug = require("debug")("db:seed");
+const config = require("config");
 
 exports.createAdmin = async function CreateAdmin() {
   UserModel.countDocuments({ isAdmin: true }, async (err, result) => {
@@ -50,19 +51,19 @@ exports.createPlayers = async function createPlayers() {
       email: "bob@example.com"
     }
   ];
-  return new Promise(async function(resolve, reject) {
-    try {
-      //map player data to model
-      const players = playerData.map(player => {
-        return new UserModel(player);
-      });
-      //create a new promise which waits for all
-      const results = await Promise.all(
-        players.map(async model => {
-          // check if the player already exists
-          const count = await UserModel.countDocuments({
-            username: model.username
-          });
+
+  try {
+    //map player data to model
+    const players = playerData.map(player => {
+      return new UserModel(player);
+    });
+
+    const arr = players.map(model => {
+      // check if the player already exists
+      return UserModel.countDocuments({
+        username: model.username
+      })
+        .then(count => {
           if (count === 0) {
             debug(`Creating player '${model.username}'.`);
             return model.save();
@@ -70,12 +71,19 @@ exports.createPlayers = async function createPlayers() {
             debug(`Player '${model.username}' already existed.`);
           }
         })
-      );
-      //NOTE: the below seems to not encrypt the password...
-      //  const results = await UserModel.insertMany(playerData);
-      resolve(results);
-    } catch (error) {
-      reject(error);
-    }
-  });
+        .catch(error => {
+          console.log("ERROR: ", error);
+        });
+    });
+
+    //create a new promise which waits for all
+    const results = await Promise.all(arr);
+    //NOTE: the below seems to not encrypt the password...
+    //  const results = await UserModel.insertMany(playerData);
+
+    return results;
+  } catch (error) {
+    debug("Error seeding players: ", error);
+    throw error;
+  }
 };

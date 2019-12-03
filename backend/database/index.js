@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("config");
 const debug = require("debug")("db:init");
+const { createAdmin, createPlayers } = require("./seed");
 
 async function connect() {
   const db_uri = `${config.get("db.host")}/${config.get("db.name")}`;
@@ -17,12 +18,18 @@ async function connect() {
       debug(ex);
       throw ex;
     })
-    .then(() => {
+    .then(async () => {
       debug("database connection successful.");
 
       debug("loading models ...");
       require("../models");
       debug("all models have been loaded.");
+
+      createAdmin();
+      if (config.get("db.seed")) {
+        debug("Seeding players.");
+        await createPlayers();
+      }
     });
 }
 
