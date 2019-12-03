@@ -6,13 +6,13 @@ const faker = require("faker");
 const { setupDB } = require("../../jest-db-setup");
 setupDB("create-api-testing");
 
-async function helperCreateUser(total, done) {
+async function helperCreateUser(total, done, customUser) {
   const results = [];
   for (let counter = 0; counter < total; counter++) {
     const user = {
-      username: faker.random.alphaNumeric(6),
-      email: faker.internet.email(),
-      password: faker.internet.password()
+      username: customUser ? customUser.username : faker.random.alphaNumeric(6),
+      email: customUser ? customUser.email : faker.internet.email(),
+      password: customUser ? customUser.password : faker.internet.password()
     };
     try {
       const res = await request.post("/api/user/create").send(user);
@@ -58,12 +58,31 @@ describe("API User Endpoints", () => {
       });
   });
 
+  it("PATCH /api/user/:id", async done => {
+    expect("TODO").toBe(true);
+    done();
+  });
+  it("DELETE /api/user/:id", async done => {
+    expect("TODO").toBe(true);
+    done();
+  });
+
+  it("GET /api/user/:id/games", async done => {
+    expect("TODO").toBe(true);
+    done();
+  });
+
+  it("GET /api/user/:username/games", async done => {
+    expect("TODO").toBe(true);
+    done();
+  });
+
   it("GET /api/user/", async done => {
-    const [user] = await helperCreateUser(1, done);
+    const [user] = await helperCreateUser(3, done);
     const response = await request.get("/api/user");
     const [result] = response.body;
 
-    expect(response.body.length).toBe(1);
+    expect(response.body.length).toBe(3);
     expect(response.status).toBe(200);
     expect(result.password).toBeUndefined();
     expect(result.username).toBe(user.username);
@@ -85,10 +104,50 @@ describe("API User Endpoints", () => {
       expect(result.username).toBe(user.username);
       expect(result.email).toBe(user.email);
       expect(result._id).toBeDefined();
+      expect(result._id).toBe(_id);
 
       done();
     } catch (error) {
       done(error);
     }
+  });
+
+  it("GET /api/user/:username", async done => {
+    const [user] = await helperCreateUser(1, done);
+    const { _id, username } = user;
+    try {
+      const response = await request.get("/api/user/" + username);
+      const result = response.body;
+
+      expect(response.status).toBe(200);
+      expect(result.password).toBeUndefined();
+      expect(result.username).toBe(user.username);
+      expect(result.email).toBe(user.email);
+      expect(result._id).toBeDefined();
+      expect(result._id).toBe(_id);
+
+      done();
+    } catch (error) {
+      done(error);
+    }
+  });
+
+  describe("API Auth Endpoint", () => {
+    it("POST /login", async done => {
+      const customUser = {
+        username: "tomek",
+        password: "qwerty",
+        email: "example@example.com"
+      };
+      const [user] = await helperCreateUser(1, done, customUser);
+      const response = await request
+        .post("/login")
+        .send({ username: customUser.username, password: customUser.password });
+      expect(response.status).toBe(302);
+      expect(response).toBe("pass!");
+      expect(response.headers.token).toBe("pass!");
+      expect(response.cookies.token).toBe("pass!");
+      done();
+    });
   });
 });
