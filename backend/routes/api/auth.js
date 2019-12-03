@@ -21,7 +21,6 @@ router.post("/login", controller.login);
 
 router.post("/logout", (req, res, next) => {
   //TODO: remove token(s) / cookies and log user out then redirect to home
-
   res.send("TODO: POST  logout");
 });
 

@@ -1,9 +1,12 @@
 const debug = require("debug")("controller:auth");
 const User = require("../models/user");
 const config = require("config");
-
+const jwt = require("jsonwebtoken");
+const util = require("../util/util");
 exports.index = async (req, res, nect) => {
-  res.send("RENDER LOGIN PAGE");
+  res.render("home", {
+    user: req.user
+  });
 };
 
 exports.login = async (req, res, next) => {
@@ -44,7 +47,10 @@ exports.login = async (req, res, next) => {
     if (user_id) {
       debug("payload OK user still logged in");
       res.user_id = user_id;
-      res.redirect("/");
+      req.user = User.findById(req.user_id).select("-password");
+      res.render("home", {
+        user: req.user
+      });
     }
   }
 
