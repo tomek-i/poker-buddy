@@ -10,9 +10,13 @@
 
 ## BACKEND
 
-- create routes
-- create templates in hbs
-- create util function to parse jwt token
+- various render calls of template require to pass in the user context manually all the time, maybe there is a way to push req.body (?) to the template which would send all variables to the template
+- Create proper Navigation menu: Home, Features, Contact Login / Signup
+- Create and administration Dashboard
+- Create a Profile page for users
+- Create a settings page for users
+  - Allow users to change their password/email/username
+  - Allow to change user's avatar
 
 ## TESTS
 
