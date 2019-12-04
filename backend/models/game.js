@@ -2,11 +2,6 @@ const debug = require("debug")("model:game");
 var mongoose = require("mongoose");
 const config = require("config");
 
-/**
- * @typedef GameModel
- * @type {object}
- */
-
 const CardSchema = new mongoose.Schema({
   suit: {
     type: String,
@@ -19,6 +14,7 @@ const CardSchema = new mongoose.Schema({
     match: [/^[0-9 JQKASCDH]+$/, "is invalid"] //match only 0-9 and J Q K A
   }
 });
+
 /**
  * @type {mongoose.Schema<GameModel>}
  */
@@ -63,6 +59,11 @@ const GameSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+/**
+ * @typedef GameModel
+ * @type {object}
+ */
 
 /**
  * @type {GameModel}

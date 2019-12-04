@@ -54,17 +54,17 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 UserSchema.pre("save", async function(next) {
-  debug("pre save");
+  debug("User pre save called");
   const user = this;
   // only hash the password if it has been modified (or is new)
   if (!user.isModified("password")) {
-    debug("password not modified");
+    debug("password has not been modified, returning and calling next()");
     return next();
   }
-  debug("hashing password: ", user.password);
+  debug("password has changed, hashing new password: ", user.password);
   const hash = await bcrypt.hash(user.password, 10);
   user.password = hash;
-  debug("updating password: ", hash);
+  debug("new password hash: ", hash);
   next();
 });
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
