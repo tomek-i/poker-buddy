@@ -10,6 +10,7 @@ const morgan = require("morgan");
 const express = require("express");
 const cors = require("cors");
 const debug = require("debug")("app:init");
+const debugCors = debug.extend("cors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 var hbs = require("express-handlebars");
@@ -18,6 +19,7 @@ var hbs = require("express-handlebars");
 //use config module to get the secret, if no private key set, end the application
 if (!config.get("secret")) {
   console.error("FATAL ERROR: secret is not defined.");
+  debug("FATAL ERROR: secret is not defined.");
   process.exit(1);
 }
 
@@ -25,18 +27,17 @@ if (!config.get("secret")) {
  * App Variables
  */
 const app = express();
+
 const APP_MODE = config.get("mode");
 const TESTING = config.get("mode") === "TEST" || app.get("env") === "test";
 const DEBUG =
   config.get("mode") === "DEBUG" || app.get("env") === "development";
 const APP_NAME = config.get("app_name");
-const debugCors = debug.extend("cors");
 
 /**
  *  App Configuration
  */
-debug(`application '${APP_NAME}' booting ...`);
-debug("running in mode:", APP_MODE);
+debug(`application '${APP_NAME}' booting in '${APP_MODE}' mode...`);
 
 let whitelist = [];
 if (DEBUG !== true && TESTING !== true) {
@@ -59,7 +60,7 @@ if (DEBUG !== true && TESTING !== true) {
   app.use(cors(corsOptions));
 }
 
-app.use(helmet());
+app.use(helmet()); //secure express app with various HTTP headers
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -97,13 +98,12 @@ try {
 /**
  * Routes Definitions
  */
-app.use(require("./middlewares/checkUser"));
 app.use(require("./routes"));
 
 /**
  * ROUTE ERROR HANDLERS
  */
-
+//TODO: separate into error handlers file into routes?!
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error("404 Page Not Found");

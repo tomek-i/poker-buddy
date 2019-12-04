@@ -1,7 +1,7 @@
 var router = require("express").Router();
 var controller = require("../../controllers/gameController");
-var auth = require("../../middlewares/auth");
-var isAdmin = require("../../middlewares/isAdmin");
+var auth = require("../../middlewares/authenticated");
+var isAdmin = require("../../middlewares/adminPermission");
 
 // url: admin/games/*
 

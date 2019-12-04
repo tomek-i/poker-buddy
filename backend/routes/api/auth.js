@@ -17,11 +17,8 @@ router.get("/forgotpassword", async (req, res) => {
 });
 
 router.get("/login", controller.index);
-router.post("/login", controller.login);
+router.post("/login", controller.authenticate);
 
-router.post("/logout", (req, res, next) => {
-  //TODO: remove token(s) / cookies and log user out then redirect to home
-  res.send("TODO: POST  logout");
-});
+router.post("/logout", controller.logout);
 
 module.exports = router;

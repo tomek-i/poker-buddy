@@ -4,10 +4,13 @@ const User = require("../models/user");
 exports.index = async (req, res, next) => {
   const user = req.user
     ? req.user
-    : req._id
-    ? User.findById(req._id).select("-password")
+    : req.user_id
+    ? User.findById(req.user_id).select("-password")
     : null;
-  if (!user) throw ReferenceError("No user found.");
+  if (!user) {
+    debug("No user found.");
+    return next(ReferenceError("No user found."));
+  }
 
   res.render("backend/index", {
     user: user

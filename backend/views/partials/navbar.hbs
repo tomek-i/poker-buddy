@@ -49,13 +49,24 @@
         </ul>
         <ul class="navbar-nav ">
             {{#if user}}
-            <li class="nav-item">
-                <a class="nav-link" href="/login">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button", data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                     <i class="fa fa-user">
-                        <span class="badge badge-error">11</span>
+                        <span class="badge badge-danger">11</span>
                     </i>
-
+                    Profile
                 </a>
+                <div class="dropdown-menu" aria-labelledby="userDropdown" style="left:-100%">
+                    {{#if user.isAdmin}}
+                    <a class="dropdown-item" href="/admin">Admin Area</a>
+                    {{/if}}
+
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                     <form action="/logout" method="post">
+                        <button class="dropdown-item" href="#">Logout</button>
+                    </form>
+                </div>
             </li>
             {{else}}
             <li class="nav-item">

@@ -27,8 +27,9 @@ async function connect() {
 
       createAdmin();
       if (config.get("db.seed")) {
-        debug("Seeding players.");
+        debug("Seeding players ...");
         await createPlayers();
+        debug("Seeding players completed.");
       }
     });
 }
