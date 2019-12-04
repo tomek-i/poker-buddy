@@ -3,7 +3,7 @@ var router = require("express").Router();
 // url: admin/*
 
 router.use("/", require("./admins"));
-router.use("/users", require("./games"));
-router.use("/games", require("./users"));
+router.use("/games", require("./games"));
+router.use("/users", require("./users"));
 
 module.exports = router;
