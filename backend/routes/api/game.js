@@ -1,22 +1,15 @@
 var router = require("express").Router();
-var controller = require("../../controllers/gameController");
-var auth = require("../../middlewares/authenticated");
-var isAdmin = require("../../middlewares/adminPermission");
+var controller = require("../../controllers/apiController");
 
 // url: api/game/*
 
-router.get("/", auth, controller.index);
-router.get("/:id", auth, controller.gameById);
-
-//return the latest game played
-router.get("/latest", auth, controller.current);
-router.get("/recent", auth, controller.current);
-router.get("/current", auth, controller.current);
+//router.get("/", controller.index);
+router.get("/:id", controller.findGameById);
 
 /* need to be authenticated + authenticated user needs to be admin for the below */
-
-router.post("/", /*[auth, isAdmin],*/ controller.create);
-router.patch("/:id", /*[auth, isAdmin],*/ controller.update);
-router.delete("/:id", /*[auth, isAdmin],*/ controller.delete);
-
+/*
+router.post("/",  controller.game_create);
+router.patch("/:id",  controller.game_update);
+router.delete("/:id",  controller.game_delete);
+*/
 module.exports = router;

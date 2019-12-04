@@ -8,21 +8,16 @@ var adminPermission = require("../middlewares/adminPermission");
 router.all("*", checkUser, loadUser);
 router.all("/admin/*", authenticated, adminPermission);
 
-
-
-
 router.use("/", require("./api/auth"));
-router.use("/api", require("./api"));
 router.use("/admin", require("./backend"));
-
 router.use("/user", require("./user"));
 
-
+router.use("/api", require("./api"));
 
 router.get("/", async (req, res) => {
   //TODO: if there is a user, then we probably can redirect straigth away.
-  res.render("index",{
-    user:req.user
+  res.render("index", {
+    user: req.user
   });
 });
 
