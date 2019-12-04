@@ -3,7 +3,7 @@ const debug = require("debug")("app:server");
 const config = require("config");
 
 const port = config.get("port") || 3000;
-const db = require("./database");
+
 /**
  * Server Activation
  */

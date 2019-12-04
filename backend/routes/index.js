@@ -6,7 +6,7 @@ var adminPermission = require("../middlewares/adminPermission");
 
 //TODO: router.all("*") or router.all("/admin/*") to define middleware for specific route patterns
 router.all("*", checkUser, loadUser);
-router.all("/admin/*", authenticated, adminPermission);
+router.all("/admin", authenticated, adminPermission);
 
 router.use("/", require("./api/auth"));
 router.use("/admin", require("./backend"));

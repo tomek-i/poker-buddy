@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const { findToken, removeToken } = require("../util/util");
 
-
 module.exports = function(req, res, next) {
+  debug("Authenticated called.");
   //get the token from the header if present
   const token = findToken(req);
   //if no token found, return response (without going to the next middelware)
