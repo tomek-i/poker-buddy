@@ -17,7 +17,25 @@ router.use("/api", require("./api"));
 router.get("/", async (req, res) => {
   //TODO: if there is a user, then we probably can redirect straigth away.
   res.render("index", {
-    user: req.user
+    activeHome: true
+  });
+});
+router.get("/features", async (req, res) => {
+  //TODO: if there is a user, then we probably can redirect straigth away.
+  res.render("features", {
+    activeFeatures: true
+  });
+});
+router.get("/about", async (req, res) => {
+  //TODO: if there is a user, then we probably can redirect straigth away.
+  res.render("about", {
+    activeAbout: true
+  });
+});
+router.get("/contact", async (req, res) => {
+  //TODO: if there is a user, then we probably can redirect straigth away.
+  res.render("contact", {
+    activeContact: true
   });
 });
 

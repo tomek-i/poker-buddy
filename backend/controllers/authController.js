@@ -4,14 +4,14 @@ const User = require("../models/user");
 const util = require("../util/util");
 
 exports.index = async (req, res, next) => {
-  debug("index called.")
-  if(req.user) return res.redirect("/user/profile")
+  debug("index called.");
+  if (req.user) return res.redirect("/user/profile");
 
   return res.render("login");
 };
 
 exports.authenticate = async (req, res, next) => {
-  debug("authenticate called.")
+  debug("authenticate called.");
 
   debug("Removing exiting authentication token.");
   util.removeToken(req, res);
@@ -28,6 +28,7 @@ exports.authenticate = async (req, res, next) => {
   //TODO: maybe it would be good, to load the user by username without the password, then call compare password function which sends a DB query by just comparing the passwords on the DB side and returns true/false
   try {
     const currentUser = await User.findOne({ username: username });
+    if (!currentUser) return next(new Error("User does not exist."));
     debug("Comparing passwords");
     currentUser.comparePassword(password, (err, isMatch) => {
       if (err) {
@@ -58,11 +59,11 @@ exports.authenticate = async (req, res, next) => {
 };
 
 exports.logout = async (req, res, next) => {
-  debug("Logout called")
-  debug("remove tokens")
-  util.removeToken(req,res)
+  debug("Logout called");
+  debug("remove tokens");
+  util.removeToken(req, res);
 
-  return res.redirect("/")
+  return res.redirect("/");
 };
 exports.register = async (req, res, next) => {
   res.render("register", {
