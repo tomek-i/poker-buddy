@@ -8,4 +8,5 @@ storiesOf("Molecule/Chip", module)
   .add("red", () => <Chip red />)
   .add("blue", () => <Chip blue />)
   .add("green", () => <Chip green />)
-  .add("black", () => <Chip black />);
+  .add("black", () => <Chip black />)
+  .add("orange", () => <Chip orange />);
