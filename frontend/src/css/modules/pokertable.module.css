@@ -4,7 +4,8 @@
 }
 
 .cardplace {
-  border: 5px solid yellow;
+  border: 5px solid rgba(255, 255, 0, 0.288);
+  min-height: var(--table-card-place-height);
   height: var(--table-card-place-height);
   width: var(--table-card-place-width);
   position: absolute;
