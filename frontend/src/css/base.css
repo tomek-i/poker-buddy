@@ -14,16 +14,61 @@
 
   /* TABLE */
   --table-corner-radius: 6.25em;
-  --table-width: 41.667em;
-  --table-height: 16.667em;
+  --table-width: 95vw /*41.667em*/;
+  --table-height: 95vh /*16.667em*/;
 
   --table-card-margin-right: 0.25em;
 
   --table-card-place-width: 19.5em;
-  --table-card-place-height: auto;
+
   --table-card-place-padding: 0.25em;
+  --table-card-place-height: calc(
+    var(--card-height) + var(--table-card-place-padding) * 4
+  );
+
+  /* POKER CHIPS */
+  /* NPL VALUES AS FOLLOW:"
+
+    GREEN: 25
+    BLACK 100
+    RED 500
+    YELLOW 1k
+    PURPLE 5k
+    BLUE 10k
+    ORANGE 25k
+    PINK 100k
+
+  */
+
+  --chip-color-inner-highlight: #ebebeb;
+  --chip-color-outer-highlight: #fff;
+
+  --chip-color-white-value: "1";
+  --chip-color-white-font: #c1c1c1;
+  --chip-color-white-inner-circle: #dddddd;
+
+  --chip-color-red-value: "5";
+  --chip-color-red-font: #6c0000;
+  --chip-color-red-inner-circle: #800000;
+
+  --chip-color-blue-value: "10";
+  --chip-color-blue-font: #00016c;
+  --chip-color-blue-inner-circle: #000099;
+
+  --chip-color-green-value: "25";
+  --chip-color-green-font: #016c00;
+  --chip-color-green-inner-circle: #008000;
+
+  --chip-color-black-value: "100";
+  --chip-color-black-font: #000;
+  --chip-color-black-inner-circle: #222;
+
+  --chip-color-orange-value: "25K";
+  --chip-color-orange-font: rgb(240, 105, 51);
+  --chip-color-orange-inner-circle: rgb(255, 135, 88);
 
   font-size: var(--default-font-size, 24px);
+
   /*
   should be loaded by default
 
