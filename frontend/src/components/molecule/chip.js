@@ -14,6 +14,7 @@ export function Chip(props) {
     else if (props.blue) return styles.blue;
     else if (props.green) return styles.green;
     else if (props.black) return styles.black;
+    else if (props.orange) return styles.orange;
     else {
       return styles.white;
     }
