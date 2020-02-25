@@ -1,5 +1,5 @@
 .pokerchip {
-  margin: 1em;
+  /*margin: 1em;*/
   position: relative;
   display: inline-block;
   width: 151px;
@@ -38,34 +38,54 @@
 }
 
 /* VALUES */
+
+/* NPL VALUES AS FOLLOW:"
+
+  GREEN: 25
+  BLACK 100
+  RED 500
+  YELLOW 1k
+  PURPLE 5k
+  BLUE 10k
+  ORANGE 25k
+  PINK 100k
+
+*/
+
 .white:after {
-  content: "1";
-  background: #dddddd;
-  color: #c1c1c1;
+  content: var(--chip-color-white-value, "1");
+  background: var(--chip-color-white-inner-circle, #dddddd);
+  color: var(--chip-color-white-font, #c1c1c1);
 }
 .red:after {
-  content: "5";
-  background: #800000;
-  color: #6c0000;
+  content: var(--chip-color-red-value, "5");
+  background: var(--chip-color-red-inner-circle, #800000);
+  color: var(--chip-color-red-font, #6c0000);
 }
 .blue:after {
-  content: "10";
-  background: #000099;
-  color: #00016c;
+  content: var(--chip-color-blue-value, "10");
+  background: var(--chip-color-blue-inner-circle, #000099);
+  color: var(--chip-color-blue-font, #00016c);
 }
 
 .green:after {
-  content: "25";
-  background: #008000;
-  color: #016c00;
+  content: var(--chip-color-green-value, "25");
+  background: var(--chip-color-green-inner-circle, #008000);
+  color: var(--chip-color-green-font, #016c00);
 }
 
 .black:after {
-  content: "100";
-  background: #222222;
-  color: #000000;
+  content: var(--chip-color-black-value, "100");
+  background: var(--chip-color-black-inner-circle, #222);
+  color: var(--chip-color-black-font, #000);
 }
 
+.orange:after {
+  font-size: 1.5em;
+  content: var(--chip-color-orange-value, "100K");
+  background: var(--chip-color-orange-inner-circle);
+  color: var(--chip-color-orange-font);
+}
 /* Colors */
 
 .white {
@@ -73,8 +93,8 @@
       0deg,
       transparent 0,
       transparent 67.5px,
-      #fff 67.5px,
-      #fff 83.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 67.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 83.5px,
       transparent 83.5px,
       transparent 151px
     ),
@@ -82,29 +102,29 @@
       60deg,
       transparent 0,
       transparent 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
       transparent 113.4304px,
       transparent 151px
     ),
     linear-gradient(
       120deg,
-      #dddddd 0,
-      #dddddd 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
-      #dddddd 113.4304px,
-      #dddddd 151px
+      var(--chip-color-white-inner-circle, #dddddd) 0,
+      var(--chip-color-white-inner-circle, #dddddd) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
+      var(--chip-color-white-inner-circle, #dddddd) 113.4304px,
+      var(--chip-color-white-inner-circle, #dddddd) 151px
     );
 }
 .white:before {
-  border: 8px solid #dddddd;
+  border: 8px solid var(--chip-color-white-inner-circle, #dddddd);
   background-image: linear-gradient(
       0deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -112,8 +132,8 @@
       30deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -121,8 +141,8 @@
       60deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -130,8 +150,8 @@
       90deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -139,19 +159,19 @@
       120deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
     linear-gradient(
       150deg,
-      #c1c1c1 0,
-      #c1c1c1 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
-      #c1c1c1 110.7104px,
-      #c1c1c1 151px
+      var(--chip-color-white-font, #c1c1c1) 0,
+      var(--chip-color-white-font, #c1c1c1) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      var(--chip-color-white-font, #c1c1c1) 110.7104px,
+      var(--chip-color-white-font, #c1c1c1) 151px
     );
 }
 
@@ -160,8 +180,8 @@
       0deg,
       transparent 0,
       transparent 67.5px,
-      #fff 67.5px,
-      #fff 83.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 67.5px,
+      var(--chip-color-outer-highlight, #fff) 83.5px,
       transparent 83.5px,
       transparent 151px
     ),
@@ -169,29 +189,29 @@
       60deg,
       transparent 0,
       transparent 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
       transparent 113.4304px,
       transparent 151px
     ),
     linear-gradient(
       120deg,
-      #800000 0,
-      #800000 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
-      #800000 113.4304px,
-      #800000 151px
+      var(--chip-color-red-inner-circle, #800000) 0,
+      var(--chip-color-red-inner-circle, #800000) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
+      var(--chip-color-red-inner-circle, #800000) 113.4304px,
+      var(--chip-color-red-inner-circle, #800000) 151px
     );
 }
 .red:before {
-  border: 8px solid #800000;
+  border: 8px solid var(--chip-color-red-inner-circle, #800000);
   background-image: linear-gradient(
       0deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -199,8 +219,8 @@
       30deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -208,8 +228,8 @@
       60deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -217,8 +237,8 @@
       90deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -226,19 +246,19 @@
       120deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
     linear-gradient(
       150deg,
-      #6c0000 0,
-      #6c0000 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
-      #6c0000 110.7104px,
-      #6c0000 151px
+      var(--chip-color-red-font, #6c0000) 0,
+      var(--chip-color-red-font, #6c0000) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      var(--chip-color-red-font, #6c0000) 110.7104px,
+      var(--chip-color-red-font, #6c0000) 151px
     );
 }
 
@@ -247,8 +267,8 @@
       0deg,
       transparent 0,
       transparent 67.5px,
-      #fff 67.5px,
-      #fff 83.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 67.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 83.5px,
       transparent 83.5px,
       transparent 151px
     ),
@@ -256,29 +276,29 @@
       60deg,
       transparent 0,
       transparent 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
       transparent 113.4304px,
       transparent 151px
     ),
     linear-gradient(
       120deg,
-      #000099 0,
-      #000099 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
-      #000099 113.4304px,
-      #000099 151px
+      var(--chip-color-blue-inner-circle, #000099) 0,
+      var(--chip-color-blue-inner-circle, #000099) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
+      var(--chip-color-blue-inner-circle, #000099) 113.4304px,
+      var(--chip-color-blue-inner-circle, #000099) 151px
     );
 }
 .blue:before {
-  border: 8px solid #000099;
+  border: 8px solid var(--chip-color-blue-inner-circle, #000099);
   background-image: linear-gradient(
       0deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -286,8 +306,8 @@
       30deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -295,8 +315,8 @@
       60deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -304,8 +324,8 @@
       90deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -313,19 +333,19 @@
       120deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
     linear-gradient(
       150deg,
-      #00016c 0,
-      #00016c 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
-      #00016c 110.7104px,
-      #00016c 151px
+      var(--chip-color-blue-font, #00016c) 0,
+      var(--chip-color-blue-font, #00016c) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      var(--chip-color-blue-font, #00016c) 110.7104px,
+      var(--chip-color-blue-font, #00016c) 151px
     );
 }
 
@@ -334,8 +354,8 @@
       0deg,
       transparent 0,
       transparent 67.5px,
-      #fff 67.5px,
-      #fff 83.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 67.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 83.5px,
       transparent 83.5px,
       transparent 151px
     ),
@@ -343,29 +363,29 @@
       60deg,
       transparent 0,
       transparent 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
       transparent 113.4304px,
       transparent 151px
     ),
     linear-gradient(
       120deg,
-      #008000 0,
-      #008000 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
-      #008000 113.4304px,
-      #008000 151px
+      var(--chip-color-green-inner-circle, #008000) 0,
+      var(--chip-color-green-inner-circle, #008000) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
+      var(--chip-color-green-inner-circle, #008000) 113.4304px,
+      var(--chip-color-green-inner-circle, #008000) 151px
     );
 }
 .green:before {
-  border: 8px solid #008000;
+  border: 8px solid var(--chip-color-green-inner-circle, #008000);
   background-image: linear-gradient(
       0deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -373,8 +393,8 @@
       30deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -382,8 +402,8 @@
       60deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -391,8 +411,8 @@
       90deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -400,19 +420,19 @@
       120deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
     linear-gradient(
       150deg,
-      #016c00 0,
-      #016c00 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
-      #016c00 110.7104px,
-      #016c00 151px
+      var(--chip-color-green-font, #016c00) 0,
+      var(--chip-color-green-font, #016c00) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      var(--chip-color-green-font, #016c00) 110.7104px,
+      var(--chip-color-green-font, #016c00) 151px
     );
 }
 .black {
@@ -420,8 +440,8 @@
       0deg,
       transparent 0,
       transparent 67.5px,
-      #fff 67.5px,
-      #fff 83.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 67.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 83.5px,
       transparent 83.5px,
       transparent 151px
     ),
@@ -429,29 +449,29 @@
       60deg,
       transparent 0,
       transparent 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
       transparent 113.4304px,
       transparent 151px
     ),
     linear-gradient(
       120deg,
-      #222222 0,
-      #222222 97.4304px,
-      #fff 97.4304px,
-      #fff 113.4304px,
-      #222222 113.4304px,
-      #222222 151px
+      var(--chip-color-black-inner-circle, #222) 0,
+      var(--chip-color-black-inner-circle, #222) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
+      var(--chip-color-black-inner-circle, #222) 113.4304px,
+      var(--chip-color-black-inner-circle, #222) 151px
     );
 }
 .black:before {
-  border: 8px solid #222222;
+  border: 8px solid var(--chip-color-black-inner-circle, #222);
   background-image: linear-gradient(
       0deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -459,8 +479,8 @@
       30deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -468,8 +488,8 @@
       60deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
@@ -477,8 +497,8 @@
       90deg,
       transparent 0,
       transparent 69.5px,
-      #ebebeb 69.5px,
-      #ebebeb 81.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
       transparent 81.5px,
       transparent 151px
     ),
@@ -486,18 +506,105 @@
       120deg,
       transparent 0,
       transparent 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
       transparent 110.7104px,
       transparent 151px
     ),
     linear-gradient(
       150deg,
-      #000000 0,
-      #000000 98.7104px,
-      #ebebeb 98.7104px,
-      #ebebeb 110.7104px,
-      #000000 110.7104px,
-      #000000 151px
+      var(--chip-color-black-font, #000) 0,
+      var(--chip-color-black-font, #000) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      var(--chip-color-black-font, #000) 110.7104px,
+      var(--chip-color-black-font, #000) 151px
+    );
+}
+
+.orange {
+  background-image: linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 67.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 67.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 83.5px,
+      transparent 83.5px,
+      transparent 151px
+    ),
+    linear-gradient(
+      60deg,
+      transparent 0,
+      transparent 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 97.4304px,
+      var(--chip-color-inner-highlight, #ebebeb) 113.4304px,
+      transparent 113.4304px,
+      transparent 151px
+    ),
+    linear-gradient(
+      120deg,
+      var(--chip-color-orange-inner-circle) 0,
+      var(--chip-color-orange-inner-circle) 97.4304px,
+      var(--chip-color-inner-highlight) 97.4304px,
+      var(--chip-color-inner-highlight) 113.4304px,
+      var(--chip-color-orange-inner-circle) 113.4304px,
+      var(--chip-color-orange-inner-circle) 151px
+    );
+}
+.orange:before {
+  border: 8px solid var(--chip-color-orange-inner-circle);
+  background-image: linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
+      transparent 81.5px,
+      transparent 151px
+    ),
+    linear-gradient(
+      30deg,
+      transparent 0,
+      transparent 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      transparent 110.7104px,
+      transparent 151px
+    ),
+    linear-gradient(
+      60deg,
+      transparent 0,
+      transparent 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      transparent 110.7104px,
+      transparent 151px
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 69.5px,
+      var(--chip-color-inner-highlight, #ebebeb) 81.5px,
+      transparent 81.5px,
+      transparent 151px
+    ),
+    linear-gradient(
+      120deg,
+      transparent 0,
+      transparent 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      transparent 110.7104px,
+      transparent 151px
+    ),
+    linear-gradient(
+      150deg,
+      var(--chip-color-orange-font) 0,
+      var(--chip-color-orange-font) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 98.7104px,
+      var(--chip-color-inner-highlight, #ebebeb) 110.7104px,
+      var(--chip-color-orange-font) 110.7104px,
+      var(--chip-color-orange-font) 151px
     );
 }
