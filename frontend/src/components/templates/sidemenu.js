@@ -17,6 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 const drawerWidth = 240;
 
@@ -109,7 +110,7 @@ export function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            TITLE
           </Typography>
         </Toolbar>
       </AppBar>
@@ -133,6 +134,14 @@ export function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
+          <ListItem button key={"Dashboard"}>
+            <ListItemIcon>
+              <DashboardIcon />
+              {/*  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+            </ListItemIcon>
+            <ListItemText primary={"Dashboard"} />
+          </ListItem>
+
           {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
