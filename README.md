@@ -3,6 +3,12 @@
 ![Example](/readme/game-example.jpg?raw=true "Game")
 This is a fun and personal project within our group of friends to track our poker performance and win tally.
 
+Currently I have been only working (development branch) on the front-end which is React and pure CSS - yes, all you see is pure CSS. 
+
+At later stages I will implement the backend and database to actually track played games. 
+
+In the future I hope to turn it into an actual playable poker game :-)
+
 **TL;TR**
 
 We occasionally get together for a few games of Poker throughout the year and we have this internal competition,
