@@ -32,10 +32,10 @@ const players = [
 
 const fullGame = [
   { ...player },
-  { ...player, id: 2, name: "player 2", smallblind: true },
-  { ...player, id: 3, name: "player 3" },
-  { ...player, id: 4, name: "player 4" },
-  { ...player, id: 5, name: "player 5" },
+  { ...player, id: 2, name: "player 2", smallblind: true, hand:[{suit: "hearts",value: "k"},{suit: "", value: ""}] },
+  { ...player, id: 3, name: "player 3", hand:[{suit: "hearts",value: "k"},{suit: "hearts", value: "j"}] },
+  { ...player, id: 4, name: "player 4", hand:[{suit: "spades",value: "a"},{suit: "clubs", value: "10"}] },
+  { ...player, id: 5, name: "player 5" , hand:[{suit: "clubs",value: "q"},{suit: "", value: ""}]},
   { ...player, id: 6, name: "player 6", dealer: true },
   { ...player, id: 7, name: "player 7" },
   { ...player, id: 8, name: "player 8", bigblind: true }
@@ -43,10 +43,10 @@ const fullGame = [
 
 const deck = [
   { suit: "hearts", value: "a" },
-  { suit: "hearts", value: "2" },
-  { suit: "hearts", value: "3" },
-  { suit: "hearts", value: "4" },
-  { suit: "hearts", value: "5" }
+  { suit: "spades", value: "2" },
+  { suit: "clubs", value: "3" },
+  { suit: "diamonds", value: "4" },
+  { suit: "", value: "5" }
 ];
 
 storiesOf("Organism/Poker/Table", module)
@@ -72,5 +72,5 @@ storiesOf("Organism/Poker/Table", module)
   ))
   .add("with 8 players", () => <PokerTable players={players}></PokerTable>)
   .add("with 8 players, dealer, small and big blind", () => (
-    <PokerTable players={fullGame}></PokerTable>
+    <PokerTable players={fullGame} deck={deck}></PokerTable>
   ));

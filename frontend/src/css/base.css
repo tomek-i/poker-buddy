@@ -14,8 +14,8 @@
 
   /* TABLE */
   --table-corner-radius: 6.25em;
-  --table-width: 95vw /*41.667em*/;
-  --table-height: 95vh /*16.667em*/;
+  --table-width: 1000px /*95vw*/ /*41.667em*/;
+  --table-height: 600px/*95vh*/ /*16.667em*/;
 
   --table-card-margin-right: 0.25em;
 
