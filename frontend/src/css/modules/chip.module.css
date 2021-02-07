@@ -53,7 +53,7 @@
 */
 
 .white:after {
-  content: var(--chip-color-white-value, "1");
+  content: var(--chip-color-white-value, "1k");
   background: var(--chip-color-white-inner-circle, #dddddd);
   color: var(--chip-color-white-font, #c1c1c1);
 }

@@ -56,6 +56,6 @@ export const Card = props => {
     );
   } else {
     //TODO: pattern ID from config or something
-    return <Frame classes="pattern-1" />;
+    return <Frame classes="pattern-3" />;
   }
 };

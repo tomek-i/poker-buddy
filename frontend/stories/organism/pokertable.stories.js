@@ -21,8 +21,8 @@ const player = {
 
 const players = [
   { ...player },
-  { ...player, id: 2, name: "player 2" },
-  { ...player, id: 3, name: "player 3" },
+  { ...player, id: 2, name: "player 2", hand:[{},{}] },
+  { ...player, id: 3, name: "player 3", hand:[{suit:"c",value:"a"},{suit:"l",value:"11"}]},
   { ...player, id: 4, name: "player 4" },
   { ...player, id: 5, name: "player 5" },
   { ...player, id: 6, name: "player 6" },
