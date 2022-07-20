@@ -1,0 +1,21 @@
+.pokertable {
+  background-color: #4aad4a;
+  border: 15px solid #a95555;
+}
+
+.cardplace {
+  border: 5px solid yellow;
+  height: var(--table-card-place-height);
+  width: var(--table-card-place-width);
+  position: absolute;
+  border-radius: 10px;
+  padding: var(--table-card-place-padding);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-sizing: border-box;
+}
+
+.cardplace :not(:last-child) {
+  margin-right: var(--table-card-margin-right, 12px);
+}

@@ -4,13 +4,12 @@ import { configure, addDecorator } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs/react";
 import { addParameters } from "@storybook/react"; // <- or your storybook framework
 
-import "../src/css/Storybook.css";
+import "../src/css/base.css";
 
 import "../src/css/Card.css";
 import "../src/css/inputbox.css";
 import "../src/css/player-positions.css";
 import "../src/css/card-back-pattern.css";
-import "../src/css/poker-player.css";
 import "../stories/templates/styles.css";
 
 import centered from "@storybook/addon-centered/react";

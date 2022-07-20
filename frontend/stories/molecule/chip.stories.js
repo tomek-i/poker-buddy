@@ -4,7 +4,8 @@ import { withInfo } from "@storybook/addon-info";
 import { Chip } from "../../src/components/molecule/chip";
 
 storiesOf("Molecule/Chip", module)
-  .add("default", () => <Chip />)
-  .add("with value", () => <Chip />)
-  .add("with text", () => <Chip />)
-  .add("with color", () => <Chip />);
+  .add("white", () => <Chip />)
+  .add("red", () => <Chip red />)
+  .add("blue", () => <Chip blue />)
+  .add("green", () => <Chip green />)
+  .add("black", () => <Chip black />);

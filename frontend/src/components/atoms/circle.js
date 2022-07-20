@@ -1,14 +1,20 @@
-//TODO: maybe can use frame instead
-
 import React, { useEffect, useState } from "react";
 import { Frame } from "./frame";
+import styles from "../../css/modules/circle.module.css";
 
+/**
+ * Represents the shape of a circle
+ * @param {*} props
+ */
 export function Circle(props) {
-  const [radius, setRadius] = useState(props.radius || 0.25);
-  const [color, setColor] = useState(props.color || "#ccc5b3");
-
   return (
-    <Frame radius={"50%"} width={radius} height={radius} color={color}>
+    <Frame
+      classes={styles.circle}
+      style={{
+        width: `${props.radius || -1}em`,
+        height: `${props.radius || -1}em`
+      }}
+    >
       {props.children}
     </Frame>
   );

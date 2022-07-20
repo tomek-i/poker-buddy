@@ -1,0 +1,39 @@
+<!-- Default form login -->
+<div class="row" style="justify-content: space-around;">
+    <form action="/login" method="post" class="text-center border border-dark mt-5 p-5">
+
+        <p class="h4 mb-4">Sign in</p>
+
+        <!-- Username -->
+        <input id="username" name="username" type="username" class="form-control mb-4" placeholder="Username">
+
+        <!-- Password -->
+        <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Password">
+
+        <div class="d-flex justify-content-around">
+            <!-- Remember me -->
+            <!--<div>
+
+                 <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                </div>
+            </div> -->
+            <div>
+                <!-- Forgot password -->
+                <a href="/forgotpassword">Forgot password?</a>
+            </div>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+        <!-- Register -->
+        <p>Not a member?
+            <a href="/register">Register</a>
+        </p>
+
+
+    </form>
+    <!-- Default form login -->
+</div>

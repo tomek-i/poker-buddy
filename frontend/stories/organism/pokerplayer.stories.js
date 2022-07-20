@@ -6,13 +6,10 @@ import { PokerPlayer } from "../../src/components/organism/pokerplayer";
 
 const unknownHand = [
   {
-    suit: "",
-    value: ""
+    value: "",
+    suit: ""
   },
-  {
-    suit: "",
-    value: ""
-  }
+  {}
 ];
 
 const oneRevealedHand = [
@@ -21,8 +18,7 @@ const oneRevealedHand = [
     value: "A"
   },
   {
-    suit: "",
-    value: ""
+    visible: "false"
   }
 ];
 const twoRevealedHand = [
@@ -37,19 +33,27 @@ const twoRevealedHand = [
 ];
 
 storiesOf("Organism/Poker/Player/", module)
-  .add("default", () => <PokerPlayer />)
-  .add("with name", () => <PokerPlayer name="Tomek" />)
-  .add("as dealer", () => <PokerPlayer dealer />)
-  .add("as small blind", () => <PokerPlayer smallblind />)
-  .add("as big blind", () => <PokerPlayer bigblind />)
-  .add("as dealer with big blind", () => <PokerPlayer dealer smallblind />)
-  .add("as dealer with small blind", () => <PokerPlayer dealer bigblind />)
-  .add("with unknown hand", () => <PokerPlayer hand={unknownHand} />)
-  .add("with one card revealed", () => <PokerPlayer hand={oneRevealedHand} />)
-  .add("with cards revealed", () => <PokerPlayer hand={twoRevealedHand} />)
+  .add("default", () => <PokerPlayer index={-1} />)
+  .add("with name", () => <PokerPlayer index={-1} name="Tomek" />)
+  .add("as dealer", () => <PokerPlayer index={-1} dealer />)
+  .add("as small blind", () => <PokerPlayer index={-1} smallblind />)
+  .add("as big blind", () => <PokerPlayer index={-1} bigblind />)
+  .add("as dealer with big blind", () => (
+    <PokerPlayer index={-1} dealer smallblind />
+  ))
+  .add("as dealer with small blind", () => (
+    <PokerPlayer index={-1} dealer bigblind />
+  ))
+  .add("with unknown hand", () => <PokerPlayer index={-1} hand={unknownHand} />)
+  .add("with one card revealed", () => (
+    <PokerPlayer index={-1} hand={oneRevealedHand} />
+  ))
+  .add("with cards revealed", () => (
+    <PokerPlayer index={-1} hand={twoRevealedHand} />
+  ))
   .add("small blind dealer revealed", () => (
-    <PokerPlayer hand={twoRevealedHand} smallblind dealer />
+    <PokerPlayer index={-1} hand={twoRevealedHand} smallblind dealer />
   ))
   .add("big blind dealer revealed", () => (
-    <PokerPlayer hand={twoRevealedHand} bigblind dealer />
+    <PokerPlayer index={-1} hand={twoRevealedHand} bigblind dealer />
   ));
