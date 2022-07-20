@@ -6,6 +6,8 @@ import { addParameters } from "@storybook/react"; // <- or your storybook framew
 
 import "../src/css/base.css";
 
+import "../src/css/Card.css";
+import "../src/css/inputbox.css";
 import "../src/css/player-positions.css";
 import "../src/css/card-back-pattern.css";
 import "../stories/templates/styles.css";
