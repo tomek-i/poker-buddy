@@ -1,0 +1,13 @@
+.card:not(:last-child) {
+  margin-right: 0.5em;
+}
+div.frame:not(:last-child) {
+  margin-right: 0.5em;
+}
+
+.red {
+  color: #e1623f;
+}
+.dark {
+  color: #0c0b13;
+}

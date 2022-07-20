@@ -17,3 +17,28 @@ In the end we estimate who is the winner of the year, which is the reason why we
 
 I hope with this little app to keep track of personal performance, best hand(s) played, tracking of blinds during the game
 and any other feature I might find usefull.
+
+
+
+#### Running 
+##### Windows
+The easiest way to get started is to install chocolaty (windows package manager) from here: https://chocolatey.org/
+after installation open the command line or powershell in administrator mode and run the following:
+
+- choco install nodejs 
+- choco install yarn
+- choco install mongodb
+
+P.S. to upgrade installed packages run choco upgrade all
+
+Once they are installed, clone the repository, and open your command line and browse to the project's frontend folder and run 
+- npm i
+in the command line to install all dependencies. After they are installed you can run:
+
+for React:
+- npm run start
+
+for Storybook:
+- npm run storybook
+
+

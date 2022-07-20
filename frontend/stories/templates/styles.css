@@ -1,0 +1,31 @@
+.default {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 0.125em;
+  height: 100vh;
+  grid-template-areas:
+    "header header header header header"
+    "side display display display display"
+    "side display display display display"
+    "side display display display display"
+    "side display display display display";
+  width: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+.side-menu {
+  grid-area: side;
+  /* extend to top */
+  grid-row-start: header-start;
+  /* hide menu */
+  left: -80%;
+  position: relative;
+  z-index: 99;
+}
+.render-area {
+  grid-area: display;
+  grid-column-start: side-start;
+}
